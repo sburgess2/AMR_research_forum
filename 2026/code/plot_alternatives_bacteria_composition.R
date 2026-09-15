@@ -2,6 +2,7 @@ library(tidyverse)
 library(camcorder)
 library(ragg)
 library(ggbeeswarm)
+library(ggtintshade)
 
 gg_record(
   device = "png",
@@ -49,8 +50,7 @@ stacked_bar <- ggplot(
   labs(x = NULL, y = NULL) +
   theme_minimal(base_family = font, base_size = 10) +
   theme(
-    #legend.position = "top",
-    legend.text = element_text(size = 8, color = text_col),
+    legend.position = "none",
     axis.text = element_text(color = text_col),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_blank(),
@@ -110,7 +110,7 @@ small_multiples <- ggplot(
   theme(
     axis.text = element_text(size = 8, color = text_col),
     axis.title.y = element_text(color = text_col),
-    strip.text = element_text(face = "bold", size = 10, color = text_col),
+    strip.text = element_blank(),
     strip.background = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_blank(),
@@ -134,19 +134,19 @@ set.seed(42)
 
 resistance_levels <- c(
   "E. coli",
-  "K. pneumoniae",
-  "P. aeruginosa",
-  "A. baumannii",
-  "S. aureus",
+  "Klebsiella pneumoniae",
+  "Pseudomonas aeruginosa",
+  "Acinetobacter baumannii",
+  "Staphylococcus aureus",
   "Enterococcus faecium"
 )
 
 resistance_colours <- c(
   "E. coli" = "#0072B2",
-  "K. pneumoniae" = "#E69F00",
-  "P. aeruginosa" = "#009E73",
-  "A. baumannii" = "#D55E00",
-  "S. aureus" = "#CC79A7",
+  "Klebsiella pneumoniae" = "#E69F00",
+  "Pseudomonas aeruginosa" = "#009E73",
+  "Acinetobacter baumannii" = "#D55E00",
+  "Staphylococcus aureus" = "#CC79A7",
   "Enterococcus faecium" = "#56B4E9"
 )
 
@@ -218,8 +218,22 @@ ggsave(
   device = agg_png
 )
 
+beeswarm_order <- resistance_summary |>
+  arrange(desc(mean_resistance)) |>
+  pull(species) |>
+  as.character()
+
+resistance_samples_ordered <- resistance_samples |>
+  mutate(species = factor(as.character(species), levels = beeswarm_order))
+
+resistance_summary_ordered <- resistance_summary |>
+  mutate(
+    species = factor(as.character(species), levels = beeswarm_order),
+    x_pos = as.numeric(species)
+  )
+
 beeswarm_plot <- ggplot(
-  resistance_samples,
+  resistance_samples_ordered,
   aes(x = species, y = resistance_pct)
 ) +
   geom_beeswarm(
@@ -231,7 +245,7 @@ beeswarm_plot <- ggplot(
     cex = 3
   ) +
   geom_segment(
-    data = resistance_summary,
+    data = resistance_summary_ordered,
     aes(
       x = x_pos - 0.3,
       xend = x_pos + 0.3,
@@ -244,13 +258,13 @@ beeswarm_plot <- ggplot(
   ) +
   scale_x_discrete(labels = scales::label_wrap(12)) +
   scale_y_continuous(
-    name = "Resistance rate (%)",
+    #name = "Resistance rate (%)",
     labels = scales::label_percent(scale = 1),
     breaks = seq(0, 100, 20),
     limits = c(0, 100),
     expand = expansion(mult = c(0, 0.02))
   ) +
-  labs(x = NULL) +
+  labs(x = NULL, y = NULL) +
   theme_minimal(base_family = font, base_size = 10) +
   theme(
     axis.text.x = element_text(color = text_col),
@@ -335,7 +349,7 @@ makeover_ribbon <- ggplot(
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
   scale_colour_manual(values = makeover_colours, guide = "none") +
   scale_fill_manual(values = makeover_colours, guide = "none") +
-  labs(x = NULL, y = "DDD/1000 patient-days") +
+  labs(x = NULL, y = "NULL") +
   theme_minimal(base_family = font, base_size = 10) +
   theme(
     axis.text = element_text(color = text_col),
@@ -488,6 +502,100 @@ diverging_stacked_bar
 ggsave(
   plot = diverging_stacked_bar,
   filename = "2026/output/stewardship_diverging_stacked_bar.png",
+  width = 9,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
+
+tintshade_data <- bind_rows(
+  stewardship_wide |>
+    transmute(
+      statement,
+      value = -`Strongly disagree`,
+      sentiment_group = "Disagree",
+      intensity = "Strong"
+    ),
+  stewardship_wide |>
+    transmute(
+      statement,
+      value = -Disagree,
+      sentiment_group = "Disagree",
+      intensity = "Moderate"
+    ),
+  stewardship_wide |>
+    transmute(
+      statement,
+      value = -Neutral / 2,
+      sentiment_group = "Neutral",
+      intensity = "Neutral"
+    ),
+  stewardship_wide |>
+    transmute(
+      statement,
+      value = Neutral / 2,
+      sentiment_group = "Neutral",
+      intensity = "Neutral"
+    ),
+  stewardship_wide |>
+    transmute(
+      statement,
+      value = Agree,
+      sentiment_group = "Agree",
+      intensity = "Moderate"
+    ),
+  stewardship_wide |>
+    transmute(
+      statement,
+      value = `Strongly agree`,
+      sentiment_group = "Agree",
+      intensity = "Strong"
+    )
+) |>
+  mutate(
+    sentiment_group = factor(
+      sentiment_group,
+      levels = c("Disagree", "Neutral", "Agree")
+    ),
+    intensity = factor(intensity, levels = c("Strong", "Moderate", "Neutral"))
+  )
+
+tintshade_colours <- c(
+  "Disagree" = "#A65858",
+  "Neutral" = "#B3B3B3",
+  "Agree" = "#4A7C96"
+)
+
+diverging_tintshade <- ggplot(
+  tintshade_data,
+  aes(x = statement, y = value, fill = sentiment_group, tintshade = intensity)
+) +
+  geom_col_tintshade(width = 0.7) +
+  geom_hline(yintercept = 0, colour = text_col, linewidth = 0.4) +
+  coord_flip() +
+  scale_fill_manual(values = tintshade_colours, name = NULL) +
+  scale_tintshade_discrete(name = "Strength") +
+  scale_y_continuous(
+    labels = function(x) scales::label_percent(scale = 1)(abs(x))
+  ) +
+  labs(x = NULL, y = "% of respondents") +
+  theme_minimal(base_family = font, base_size = 10) +
+  theme(
+    legend.position = "top",
+    legend.text = element_text(size = 8, color = text_col),
+    axis.text = element_text(color = text_col),
+    axis.title.x = element_text(color = text_col),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.background = element_rect(fill = bg_col, color = bg_col),
+    plot.background = element_rect(fill = bg_col, color = bg_col)
+  )
+diverging_tintshade
+ggsave(
+  plot = diverging_tintshade,
+  filename = "2026/output/stewardship_diverging_tintshade.png",
   width = 9,
   height = 6,
   unit = "in",
