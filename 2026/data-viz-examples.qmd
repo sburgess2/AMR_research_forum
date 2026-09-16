@@ -10,6 +10,9 @@ format:
     transition: fade
     template-partials:
       - title-slide.html
+    revealjs-plugins:
+      - imagemover
+    include-after-body: eye-annotations.html
 filters:
   - roughnotation
   - more-fragments
@@ -68,42 +71,96 @@ Today we're going to work through a couple of examples of how to declutter and f
 
 ## Presenting data clearly
 
-- No clutter
-- Colour with purpose
+::: {#filename filename="data-viz-examples.qmd"}
+:::
+
+::: {.fragment fragment-index=1}
+No clutter
+:::
+
+::: {.fragment fragment-index=2}
+Colour with purpose
+:::
+
+::: {.fragment fragment-index=3}
+Reduce eye movement
+:::
+
+::: {.fragment fragment-index=4}
+Text hierarchy
+:::
+
+::: {.fragment fragment-index=5}
+Clear takeaway message
+:::
+
+:::: columns
+
+::: {.column width="50%"}
+::: {.annotation-frame}
+![](images/line-chart-with-labels_CScherer.png)
+
+::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#2563eb"}
+![](images/spacer.png){#imagemover}
+:::
+
+::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#f97316"}
+![](images/spacer.png){#imagemover}
+:::
+
+::: {.fragment .eye-annotation fragment-index=4 rn-type=circle rn-color="#2563eb"}
+![](images/spacer.png){#imagemover}
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {.annotation-frame}
+![](images/VitC_CThompson.jpeg)
+
+::: {.fragment .eye-annotation fragment-index=2 rn-type=circle rn-color="#dc2626"}
+![](images/spacer.png){#imagemover}
+:::
+
+::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#2563eb"}
+![](images/spacer.png){#imagemover}
+:::
+
+::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#f97316"}
+![](images/spacer.png){#imagemover}
+:::
+
+::: {.fragment .eye-annotation fragment-index=4 rn-type=circle rn-color="#2563eb"}
+![](images/spacer.png){#imagemover}
+:::
+
+::: {.fragment .eye-annotation fragment-index=5 rn-type=circle rn-color="#7c3aed"}
+![](images/spacer.png){#imagemover}
+:::
+:::
+:::
+
+::::::
+
+::: {.notes}
+Ask audience what they think works well with these graphs. Colour with purpose
   - Less is more
   - Accessible colours
   - Transparency
-- Reduce eye movement
+  Reduce eye movement
   - Left aligned text
   - Label directly
   - Horizontal text
-- Text hierarchy
-- Annotations to highlight observations
 
-- Clear takeaway message
-
-:::: columns
-::: {.column width="33%"}
-![](images/Rainfall_CThompson.png)
-:::
-
-::: {.column width="33%"}
-![](images/line-chart-with-labels_CScherer.png)
-:::
-
-::: {.column width="33%"}
-![](images/VitC_CThompson.jpeg)
-:::
-
-:::::
-
-:::
-::: {.notes}
-Ask audience what they think works well with these graphs
+Circle positions: preview this slide, drag/resize each transparent overlay box
+(hover to reveal its handles) onto the relevant title, subtitle, or labels,
+then open the slide menu and choose "Save Moved Images" to write the
+positions back into this file.
 :::
 
 ## Where do you look?
 
+Annotations to highlight observations
 ::: {.incremental}
 
 ![](images/CedricScherer_USviews_votes_simpsons.png)
@@ -132,27 +189,22 @@ Today we're going to work through a couple of examples of how to declutter and f
 Before moving to next slide ask audience what clutter they would remove
 :::
 
-![](images/output/stacked_original.png)
+![](output/stacked_original.png)
+
+::: placeholder-note
+Image source: [Golli et al 2024 ](https://www.mdpi.com/1424-8247/17/4/407)
+:::
 
 ## Makeover
 
+Lets declutter
+
+::: {.fragment .jackInTheBox}
+![](output/stacked_declutter.png)
+:::
+
 ::: {.notes}
 Before moving to next slide ask audience how they would colour with purpose
-:::
-
-![](images/output/stacked_declutter.png)
-
-
-
-## Makeover example 2
-
-::: {.incremental}
-
-![](images/GreenhoodLogo2.png)
-:::
-
-::: {.notes}
-Start without the clutter and only use grey for the clutter. Add in colour, for stacked bars have smallest bars on bottom. Hierachy of information. 
 :::
 
 ## The elements of a graph
