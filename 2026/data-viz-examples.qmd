@@ -1,7 +1,7 @@
 ---
 title: "Visualising AMR data for scientific communication"
 author: "Sara Burgess"
-date: "September 2026"
+date: last-modified
 date-format: "MMMM YYYY"
 format:
   revealjs:
@@ -13,9 +13,12 @@ format:
     revealjs-plugins:
       - imagemover
     include-after-body: eye-annotations.html
+revealjs-plugins:
+  - editable
 filters:
   - roughnotation
   - more-fragments
+  - editable
 ---
 
 
@@ -74,23 +77,23 @@ Today we're going to work through a couple of examples of how to declutter and f
 ::: {#filename filename="data-viz-examples.qmd"}
 :::
 
-::: {.fragment fragment-index=1}
+::: {.fragment .exclusive-fragment fragment-index=1}
 No clutter
 :::
 
-::: {.fragment fragment-index=2}
+::: {.fragment .exclusive-fragment fragment-index=2}
 Colour with purpose
 :::
 
-::: {.fragment fragment-index=3}
+::: {.fragment .exclusive-fragment fragment-index=3}
 Reduce eye movement
 :::
 
-::: {.fragment fragment-index=4}
+::: {.fragment .exclusive-fragment fragment-index=4}
 Text hierarchy
 :::
 
-::: {.fragment fragment-index=5}
+::: {.fragment .exclusive-fragment fragment-index=5}
 Clear takeaway message
 :::
 
@@ -100,15 +103,15 @@ Clear takeaway message
 ::: {.annotation-frame}
 ![](images/line-chart-with-labels_CScherer.png)
 
-::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#2563eb"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#2563eb"}
 ![](images/spacer.png){#imagemover}
 :::
 
-::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#f97316"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#f97316"}
 ![](images/spacer.png){#imagemover}
 :::
 
-::: {.fragment .eye-annotation fragment-index=4 rn-type=circle rn-color="#2563eb"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=4 rn-type=circle rn-color="#2563eb"}
 ![](images/spacer.png){#imagemover}
 :::
 :::
@@ -118,23 +121,23 @@ Clear takeaway message
 ::: {.annotation-frame}
 ![](images/VitC_CThompson.jpeg)
 
-::: {.fragment .eye-annotation fragment-index=2 rn-type=circle rn-color="#dc2626"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=2 rn-type=circle rn-color="#dc2626"}
 ![](images/spacer.png){#imagemover}
 :::
 
-::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#2563eb"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#2563eb"}
 ![](images/spacer.png){#imagemover}
 :::
 
-::: {.fragment .eye-annotation fragment-index=3 rn-type=circle rn-color="#f97316"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#f97316"}
 ![](images/spacer.png){#imagemover}
 :::
 
-::: {.fragment .eye-annotation fragment-index=4 rn-type=circle rn-color="#2563eb"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=4 rn-type=circle rn-color="#2563eb"}
 ![](images/spacer.png){#imagemover}
 :::
 
-::: {.fragment .eye-annotation fragment-index=5 rn-type=circle rn-color="#7c3aed"}
+::: {.fragment .eye-annotation .exclusive-fragment fragment-index=5 rn-type=circle rn-color="#7c3aed"}
 ![](images/spacer.png){#imagemover}
 :::
 :::
