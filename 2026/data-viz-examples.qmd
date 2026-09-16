@@ -161,48 +161,6 @@ Start without the clutter and only use grey for the clutter. Add in colour, for 
 Add in here an example of a graph with the features of a clear visual
 :::
 
-
-## Using colour
-
-:::: columns
-::: {.column width="33%"}
-Differentiate groups
-![](output/linkedin_impressions_followers.png){width="100%"}
-:::
-
-::: {.column width="33%"}
-Encode a variable
-![](output/linkedin_top_posts.png){width="100%"}
-:::
-
-::: {.column width="33%"}
-Highlight certain observations
-![](output/linkedin_top_posts.png){width="100%"}
-:::
-::::
-
-::: {.notes}
-Add in graphs illustrating three ways to use colour
-:::
-
-## My LinkedIn post goal - Now
-
-- Get more than 800 followers by Feb 2027
-- Generate at least 2 posts that get over 5000 impressions by Feb 2027
-
-![](output/linkedin_followers_projection.png)
-
-
-## How to gain more followers?
-
-- Follow similar people and comment
-- Post regularly
-- Share relevant content
-- Engage with your audience
-- Unique content / point of view
-
-![](images/follow.png)
-
 ## What I am doing
 
 ::: {.fragment .jackInTheBox}
@@ -217,24 +175,6 @@ Add in graphs illustrating three ways to use colour
 {{< bi hand-thumbs-up-fill color=#7b9324 >}} Share relevant content
 :::
 
-::: {.fragment .jackInTheBox}
-![](images/portfolio.png)
-:::
-
-## What I'm not doing so well
-
-::: {.fragment .jackInTheBox}
-{{< bi hand-thumbs-down-fill color=#878787 >}} Commenting on peoples posts
-:::
-
-::: {.fragment .jackInTheBox}
-{{< bi hand-thumbs-down-fill color=#878787 >}} Engaging with my audience, by letting my personality come through.
-:::
-
-::: {.fragment .jackInTheBox}
-{{< bi hand-thumbs-down-fill color=#878787 >}} Providing unique content / point of view
-:::
-
 
 ## Resources
 
@@ -243,19 +183,5 @@ Add in graphs illustrating three ways to use colour
 - [The Visual Dictory of Antimicrobial Stewardship, Infection Control and Institutional Surveillance Data](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full) 
 :::
 
-## How do you feel?
+## Summary
 
-Goal last year
-- Generate posts that get over 1000 impressions
-
-:::: columns
-::: {.column width="50%"}
-My number of impressions have been increasing
-![](output/linkedin_impressions_followers.png){width="100%"}
-:::
-
-::: {.column width="50%"}
-My top ten LinkedIn posts
-![](output/linkedin_top_posts.png){width="100%"}
-:::
-::::
