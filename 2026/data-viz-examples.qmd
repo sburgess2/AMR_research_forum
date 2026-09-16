@@ -102,6 +102,18 @@ Today we're going to work through a couple of examples of how to declutter and f
 Ask audience what they think works well with these graphs
 :::
 
+## Where do you look?
+
+::: {.incremental}
+
+![](images/CedricScherer_USviews_votes_simpsons.png)
+:::
+
+::: {.notes}
+Your private presenter notes go here.
+Put up an AMR related graph, then follow the same approach that Alex does from data with Storytelling. Ask the audience to close their eyes, open them, take note of where you looked at the graph first then think about how your eyes moved across the slide. https://www.youtube.com/watch?v=0AoS22GoosI People tend to look at the centre first. Where did your eyes look, is it where you want your audience to be looking? Although each person may look at the graph in a different way.  
+:::
+
 ## How do you feel?
 
 ![](images/fmicb-12-743939-g004.webp)
@@ -119,17 +131,18 @@ Today we're going to work through a couple of examples of how to declutter and f
 ::: {.notes}
 Before moving to next slide ask audience what clutter they would remove
 :::
-## Where do you look?
 
-::: {.incremental}
+![](images/output/stacked_original.png)
 
-![](images/GreenhoodLogo2.png)
-:::
+## Makeover
 
 ::: {.notes}
-Your private presenter notes go here.
-Put up an AMR related graph, then follow the same approach that Alex does from data with Storytelling. Ask the audience to close their eyes, open them, take note of where you looked at the graph first then think about how your eyes moved across the slide. https://www.youtube.com/watch?v=0AoS22GoosI People tend to look at the centre first. Where did your eyes look, is it where you want your audience to be looking? Although each person may look at the graph in a different way.  
+Before moving to next slide ask audience how they would colour with purpose
 :::
+
+![](images/output/stacked_declutter.png)
+
+
 
 ## Makeover example 2
 
@@ -148,11 +161,7 @@ Start without the clutter and only use grey for the clutter. Add in colour, for 
 Add in here an example of a graph with the features of a clear visual
 :::
 
-## Formatting text
 
-::: {.notes}
-people will generally start in the left hand corner and zig zag across the slide.
-Make these changes: Title left hand corner, Reorintate y axis title, 
 ## Using colour
 
 :::: columns
