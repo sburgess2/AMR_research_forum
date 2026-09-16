@@ -26,12 +26,12 @@ species_levels <- c(
 )
 
 species_colours <- c(
-  "E. coli" = "#0072B2",
-  "K. pneumoniae" = "#E69F00",
-  "P. aeruginosa" = "#009E73",
-  "A. baumannii" = "#D55E00",
-  "S. aureus" = "#CC79A7",
-  "Other" = "#999999"
+  "E. coli" = "#66C2A5",
+  "K. pneumoniae" = "#FC8D62",
+  "P. aeruginosa" = "#8DA0CB",
+  "A. baumannii" = "#E78AC3",
+  "S. aureus" = "#A6D854",
+  "Other" = "#E5C494"
 )
 
 composition_data <- read_csv("2026/data/bacteria_composition_dummy.csv") |>
@@ -95,7 +95,7 @@ small_multiples <- ggplot(
     inherit.aes = FALSE
   ) +
   geom_line(aes(colour = species), linewidth = 1.1) +
-  geom_point(aes(colour = species), size = 1.8) +
+  #geom_point(aes(colour = species), size = 1.8) +
   facet_wrap(~species, nrow = 2) +
   scale_x_continuous(breaks = seq(2016, 2025, 3)) +
   scale_y_continuous(
@@ -142,12 +142,12 @@ resistance_levels <- c(
 )
 
 resistance_colours <- c(
-  "E. coli" = "#0072B2",
-  "Klebsiella pneumoniae" = "#E69F00",
-  "Pseudomonas aeruginosa" = "#009E73",
-  "Acinetobacter baumannii" = "#D55E00",
-  "Staphylococcus aureus" = "#CC79A7",
-  "Enterococcus faecium" = "#56B4E9"
+  "E. coli" = "#66C2A5",
+  "Klebsiella pneumoniae" = "#FC8D62",
+  "Pseudomonas aeruginosa" = "#8DA0CB",
+  "Acinetobacter baumannii" = "#E78AC3",
+  "Staphylococcus aureus" = "#A6D854",
+  "Enterococcus faecium" = "#E5C494"
 )
 
 n_hospitals <- 20
@@ -286,7 +286,7 @@ ggsave(
   device = agg_png
 )
 
-antibiotic_levels <- c("Ciprofloxacin", "Meropenem")
+antibiotic_levels <- c("Antibiotic 1", "Antibiotic 2")
 
 consumption_data <- read_csv("2026/data/antibiotic_consumption_dummy.csv") |>
   mutate(antibiotic = factor(antibiotic, levels = antibiotic_levels))
@@ -301,6 +301,7 @@ bad_line_errorbars <- ggplot(
     aes(ymin = mean_ddd - sd_ddd, ymax = mean_ddd + sd_ddd),
     width = 0.3
   ) +
+  scale_x_continuous(breaks = seq(2016, 2025, 3)) +
   labs(x = NULL, y = NULL) +
   theme_grey(base_size = 11)
 
@@ -316,8 +317,8 @@ ggsave(
 )
 
 makeover_colours <- c(
-  "Ciprofloxacin" = "grey60",
-  "Meropenem" = "#0074D9"
+  "Antibiotic 1" = "grey60",
+  "Antibiotic 2" = "#0074D9"
 )
 
 line_end_labels <- consumption_data |>
@@ -389,7 +390,7 @@ bad_clustered_bar <- ggplot(
   labs(x = NULL, y = NULL) +
   theme_grey(base_size = 11) +
   theme(axis.text.x = element_text(angle = 40, hjust = 1))
-
+bad_clustered_bar
 ggsave(
   plot = bad_clustered_bar,
   filename = "2026/output/stewardship_bad_clustered_bar.png",
@@ -648,7 +649,7 @@ makeover_bar <- ggplot(
     expand = expansion(mult = c(0, 0.05))
   ) +
   scale_fill_manual(values = class_colours, guide = "none") +
-  labs(x = NULL, y = "% of prescriptions") +
+  labs(x = NULL, y = NULL) +
   theme_minimal(base_family = font, base_size = 10) +
   theme(
     axis.text = element_text(color = text_col),
