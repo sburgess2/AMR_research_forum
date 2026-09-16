@@ -1,0 +1,252 @@
+---
+title: "Visualising AMR data for scientific communication"
+author: "Sara Burgess"
+date: "September 2026"
+date-format: "MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, custom-theme.scss]
+    slide-number: true
+    transition: fade
+    template-partials:
+      - title-slide.html
+filters:
+  - roughnotation
+  - more-fragments
+---
+
+
+
+## Outline
+
+- Interactive session
+- Graph makeovers
+
+::: {.notes}
+Talk about why generating clear visuals is important - particularly in the field of AMR when we're communicating to the general public. 
+But also to other scientists, health professionals, government agencies, funding agencies 
+:::
+
+## My background
+
+- Microbiologist
+- Self-taught data visualisation specialist
+
+![](images/data.png)
+
+## My research
+
+- 
+
+![](images/research.png)
+
+::: {.notes}
+Use a one health image
+:::
+
+## My research
+
+- 
+
+![](images/research.png)
+
+::: {.notes}
+Add in an image of Bhutan, dairy calf, river
+:::
+
+## Presenting data clearly
+
+Are you presenting your data your data clearly?
+Is your key message clear?
+
+![](images/CedricScherer_USviews_votes_simpsons.jpg)
+
+::: {.notes}
+Ask the audience to describe how they feel when they look at this image with too many colours.
+Today we're going to work through a couple of examples of how to declutter and format your graphs so that the audience/reader is clear where they're supposed to look and what the key message is of the graph
+:::
+
+## Presenting data clearly
+
+- No clutter
+- Colour with purpose
+  - Less is more
+  - Accessible colours
+  - Transparency
+- Reduce eye movement
+  - Left aligned text
+  - Label directly
+  - Horizontal text
+- Text hierarchy
+- Annotations to highlight observations
+
+- Clear takeaway message
+
+:::: columns
+::: {.column width="33%"}
+![](images/Rainfall_CThompson.png)
+:::
+
+::: {.column width="33%"}
+![](images/line-chart-with-labels_CScherer.png)
+:::
+
+::: {.column width="33%"}
+![](images/VitC_CThompson.jpeg)
+:::
+
+:::::
+
+:::
+::: {.notes}
+Ask audience what they think works well with these graphs
+:::
+
+## How do you feel?
+
+![](images/fmicb-12-743939-g004.webp)
+
+::: {.notes}
+Ask the audience to describe how they feel when they look at this image with too many colours. Explain this is dummy data from a paper that analyses AMR data visualisations.
+Today we're going to work through a couple of examples of how to declutter and format your graphs so that the audience/reader is clear where they're supposed to look and what the key message is of the graph
+:::
+
+
+
+
+## Makeover
+
+::: {.notes}
+Before moving to next slide ask audience what clutter they would remove
+:::
+## Where do you look?
+
+::: {.incremental}
+
+![](images/GreenhoodLogo2.png)
+:::
+
+::: {.notes}
+Your private presenter notes go here.
+Put up an AMR related graph, then follow the same approach that Alex does from data with Storytelling. Ask the audience to close their eyes, open them, take note of where you looked at the graph first then think about how your eyes moved across the slide. https://www.youtube.com/watch?v=0AoS22GoosI People tend to look at the centre first. Where did your eyes look, is it where you want your audience to be looking? Although each person may look at the graph in a different way.  
+:::
+
+## Makeover example 2
+
+::: {.incremental}
+
+![](images/GreenhoodLogo2.png)
+:::
+
+::: {.notes}
+Start without the clutter and only use grey for the clutter. Add in colour, for stacked bars have smallest bars on bottom. Hierachy of information. 
+:::
+
+## The elements of a graph
+
+::: {.notes}
+Add in here an example of a graph with the features of a clear visual
+:::
+
+## Formatting text
+
+::: {.notes}
+people will generally start in the left hand corner and zig zag across the slide.
+Make these changes: Title left hand corner, Reorintate y axis title, 
+## Using colour
+
+:::: columns
+::: {.column width="33%"}
+Differentiate groups
+![](output/linkedin_impressions_followers.png){width="100%"}
+:::
+
+::: {.column width="33%"}
+Encode a variable
+![](output/linkedin_top_posts.png){width="100%"}
+:::
+
+::: {.column width="33%"}
+Highlight certain observations
+![](output/linkedin_top_posts.png){width="100%"}
+:::
+::::
+
+::: {.notes}
+Add in graphs illustrating three ways to use colour
+:::
+
+## My LinkedIn post goal - Now
+
+- Get more than 800 followers by Feb 2027
+- Generate at least 2 posts that get over 5000 impressions by Feb 2027
+
+![](output/linkedin_followers_projection.png)
+
+
+## How to gain more followers?
+
+- Follow similar people and comment
+- Post regularly
+- Share relevant content
+- Engage with your audience
+- Unique content / point of view
+
+![](images/follow.png)
+
+## What I am doing
+
+::: {.fragment .jackInTheBox}
+{{< bi hand-thumbs-up-fill color=#7b9324 >}} Follow similar people - other data visualisation specialists
+:::
+
+::: {.fragment .jackInTheBox}
+{{< bi hand-thumbs-up-fill color=#7b9324 >}} Post regularly
+:::
+
+::: {.fragment .jackInTheBox}
+{{< bi hand-thumbs-up-fill color=#7b9324 >}} Share relevant content
+:::
+
+::: {.fragment .jackInTheBox}
+![](images/portfolio.png)
+:::
+
+## What I'm not doing so well
+
+::: {.fragment .jackInTheBox}
+{{< bi hand-thumbs-down-fill color=#878787 >}} Commenting on peoples posts
+:::
+
+::: {.fragment .jackInTheBox}
+{{< bi hand-thumbs-down-fill color=#878787 >}} Engaging with my audience, by letting my personality come through.
+:::
+
+::: {.fragment .jackInTheBox}
+{{< bi hand-thumbs-down-fill color=#878787 >}} Providing unique content / point of view
+:::
+
+
+## Resources
+
+::: {.incremental}
+- Storytelling with Data
+- [The Visual Dictory of Antimicrobial Stewardship, Infection Control and Institutional Surveillance Data](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full) 
+:::
+
+## How do you feel?
+
+Goal last year
+- Generate posts that get over 1000 impressions
+
+:::: columns
+::: {.column width="50%"}
+My number of impressions have been increasing
+![](output/linkedin_impressions_followers.png){width="100%"}
+:::
+
+::: {.column width="50%"}
+My top ten LinkedIn posts
+![](output/linkedin_top_posts.png){width="100%"}
+:::
+::::
