@@ -132,7 +132,7 @@ p <- ggplot(stack_data, aes(x = species, y = percentage, fill = category)) +
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
-
+p
 ggsave(
   plot = p,
   filename = "2026/output/stacked_original.png",
@@ -148,7 +148,10 @@ declutter_data <- stack_data |>
   filter(species != "Other") |>
   mutate(species = fct_drop(species))
 
-ggplot(declutter_data, aes(x = species, y = percentage, fill = category)) +
+p_declutter <- ggplot(
+  declutter_data,
+  aes(x = species, y = percentage, fill = category)
+) +
   geom_col(
     position = position_stack(reverse = TRUE),
     width = 0.65,
@@ -185,6 +188,18 @@ ggplot(declutter_data, aes(x = species, y = percentage, fill = category)) +
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
+p_declutter
+
+ggsave(
+  plot = p_declutter,
+  filename = "2026/output/stacked_declutter.png",
+  width = 8,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
 
 purposeful_colours <- c(
   "MDR" = "#F8E088",
