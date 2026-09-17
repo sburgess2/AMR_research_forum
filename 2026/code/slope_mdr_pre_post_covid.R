@@ -23,9 +23,9 @@ grey_text_colour <- "grey25"
 label_grey <- "grey65"
 
 plot_title <- glue::glue(
-  "MDR decreased across ICU pathogens post-COVID, but ",
-  "<span style='color:{highlight_colour};'>Acinetobacter spp.</span> ",
-  "had the greatest proportion of MDR isolates"
+  "The prevalence of MDR ICU pathogens decreased post-COVID, but ",
+  "<span style='color:{highlight_colour};'><i>Acinetobacter</i> spp.</span> ",
+  "but remained the highest for <i>Acinetobacter</i> spp."
 )
 
 mdr_data <- read_csv("2026/data/amr_mdr_pdr_pre_post_covid.csv") |>
@@ -57,11 +57,11 @@ y_max <- max(mdr_data$percentage)
 
 pre_labels <- mdr_data |>
   filter(period == "Pre-COVID-19") |>
-  mutate(label = glue::glue("{round(percentage, 1)}%"))
+  mutate(label = glue::glue("{species} {round(percentage, 1)}%"))
 
 post_labels <- mdr_data |>
   filter(period == "Post-COVID-19") |>
-  mutate(label = glue::glue("{species} {round(percentage, 1)}%"))
+  mutate(label = glue::glue("{round(percentage, 1)}%"))
 
 stack_data <- read_csv("2026/data/amr_mdr_pdr_pre_post_covid.csv") |>
   mutate(
@@ -480,6 +480,14 @@ ggsave(
   device = agg_png
 )
 
+gg_record(
+  device = "png",
+  width = 8,
+  height = 7,
+  unit = "in",
+  dpi = 300
+)
+
 p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   geom_line(aes(color = line_colour, linewidth = is_acinetobacter)) +
   geom_point(aes(color = line_colour, size = is_acinetobacter)) +
@@ -494,7 +502,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     guide = "none"
   ) +
   scale_size_manual(values = c(`TRUE` = 3, `FALSE` = 2), guide = "none") +
-  scale_x_continuous(limits = c(0.6, 6.3)) +
+  scale_x_continuous(limits = c(0.6, 2.4)) +
   scale_y_continuous(limits = c(0, y_max + 12)) +
   coord_cartesian(clip = "off") +
   geom_text_repel(
@@ -503,6 +511,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
+    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     size = 2.6,
@@ -514,6 +523,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
+    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     fontface = "bold",
@@ -526,6 +536,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
+    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     size = 2.6,
@@ -537,6 +548,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
+    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     fontface = "bold",
@@ -549,7 +561,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     y = y_max + 6,
     label = c("Pre-COVID-19", "Post-COVID-19"),
     family = font,
-    fontface = "plain",
+    fontface = "bold",
     color = grey_text_colour,
     size = 2.8
   ) +
@@ -557,7 +569,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   theme(
     legend.position = "none",
     plot.title.position = "plot",
-    plot.margin = margin(6, 10, 10, 10),
+    plot.margin = margin(5, 5, 5, 5),
     plot.title = element_textbox_simple(
       color = text_col,
       face = "bold",
