@@ -24,7 +24,8 @@ grey_text_colour <- "grey50"
 plot_title <- "MDR decreased across ICU pathogens post-COVID, but Acinetobacter spp. had the greatest proportion of MDR isolates"
 
 mdr_data <- read_csv("2026/data/amr_mdr_pdr_pre_post_covid.csv") |>
-  filter(category == "MDR", species != "Other") |>
+  filter(category %in% c("MDR", "PDR"), species != "Other") |>
+  summarise(percentage = sum(percentage), .by = c(period, species)) |>
   mutate(
     period = factor(period, levels = c("Pre-COVID-19", "Post-COVID-19")),
     x = if_else(period == "Pre-COVID-19", 1, 2)
@@ -45,7 +46,8 @@ mdr_data <- mdr_data |>
       highlight_colour,
       grey_text_colour
     ),
-    label_face = if_else(is_acinetobacter, "bold", "plain")
+    label_face = if_else(is_acinetobacter, "bold", "plain"),
+    label_size = if_else(is_acinetobacter, 3.2, 2.6)
   )
 
 pre_labels <- mdr_data |>
@@ -201,15 +203,10 @@ ggsave(
   device = agg_png
 )
 
-purposeful_colours <- c(
-  "MDR" = "#F8E088",
-  "PDR" = "#cd7058",
-  "NON-MDR/PDR" = "#D9D9D9"
-)
 
 purposeful_colours <- c(
-  "MDR" = "#fab909",
-  "PDR" = "#cd7058",
+  "MDR" = "#fdae6b",
+  "PDR" = "#f16913",
   "NON-MDR/PDR" = "#D9D9D9"
 )
 
@@ -325,7 +322,7 @@ p_reorderd <- ggplot(
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
-
+p_reorderd
 ggsave(
   plot = p_colour,
   filename = "2026/output/stacked_reordered.png",
@@ -349,6 +346,7 @@ p_horizontal <- ggplot(
   ) +
   facet_wrap(~period, ncol = 1, strip.position = "top") +
   scale_fill_manual(values = purposeful_colours, name = NULL) +
+  scale_x_discrete(limits = rev) +
   scale_y_continuous(
     labels = scales::label_percent(scale = 1),
     breaks = seq(0, 100, 25),
@@ -386,18 +384,28 @@ ggsave(
   device = agg_png
 )
 
+gutter <- 15
+
 mirror_data <- reordered_data |>
+  filter(category %in% c("MDR", "PDR")) |>
   mutate(
     y_num = as.numeric(fct_rev(species)),
-    x_min = if_else(period == "Pre-COVID-19", -ymax, ymin),
-    x_max = if_else(period == "Pre-COVID-19", -ymin, ymax)
+    x_min = if_else(period == "Pre-COVID-19", -(ymax + gutter), ymin + gutter),
+    x_max = if_else(period == "Pre-COVID-19", -(ymin + gutter), ymax + gutter)
   )
 
-species_breaks <- mirror_data |>
-  distinct(y_num, species) |>
-  arrange(y_num)
+species_labels <- mirror_data |>
+  distinct(y_num, species)
 
 n_species <- max(mirror_data$y_num)
+
+period_labels <- mirror_data |>
+  summarise(max_extent = max(abs(c(x_min, x_max))), .by = period) |>
+  mutate(
+    label = as.character(period),
+    x = (gutter + max_extent) / 2,
+    x = if_else(period == "Pre-COVID-19", -x, x)
+  )
 
 ggplot(mirror_data) +
   geom_rect(
@@ -411,25 +419,28 @@ ggplot(mirror_data) +
     color = "white",
     linewidth = 0.3
   ) +
-  geom_vline(xintercept = 0, color = text_col, linewidth = 0.4) +
-  annotate(
-    "text",
-    x = c(-70, 70),
-    y = n_species + 1.2,
-    label = c("Pre-COVID-19", "Post-COVID-19"),
+  geom_text(
+    data = species_labels,
+    aes(x = 0, y = y_num, label = species),
+    family = font,
+    color = text_col,
+    size = 3,
+    hjust = 0.5
+  ) +
+  geom_text(
+    data = period_labels,
+    aes(x = x, y = n_species + 1.2, label = label),
     family = font,
     fontface = "bold",
     color = text_col,
-    size = 3.2
+    size = 4.23
   ) +
-  scale_y_continuous(
-    breaks = species_breaks$y_num,
-    labels = species_breaks$species,
-    expand = expansion(mult = c(0.02, 0.08))
-  ) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.08))) +
   scale_x_continuous(
     breaks = seq(-100, 100, 25),
-    labels = function(x) scales::label_percent(scale = 1)(abs(x)),
+    labels = function(x) {
+      scales::label_percent(scale = 1)(pmax(abs(x) - gutter, 0))
+    },
     expand = expansion(mult = c(0.02, 0.02))
   ) +
   scale_fill_manual(values = purposeful_colours, name = NULL) +
@@ -437,22 +448,34 @@ ggplot(mirror_data) +
   coord_cartesian(clip = "off") +
   theme_minimal(base_family = font, base_size = 10) +
   theme(
-    legend.position = "top",
-    legend.justification = "right",
+    legend.position = "none",
+    #legend.justification = "right",
     legend.title = element_blank(),
-    legend.key.size = unit(0.8, "lines"),
-    legend.text = element_text(size = 8, color = text_col),
-    axis.text.y = element_text(color = text_col),
+    #legend.key.size = unit(0.8, "lines"),
+    #legend.text = element_text(size = 8, color = text_col),
+    axis.text.y = element_blank(),
     axis.text.x = element_text(color = text_col),
-    panel.grid = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "grey85", linewidth = 0.3),
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col),
     plot.margin = margin(25, 10, 10, 10)
   )
+record_polaroid()
 
-colorblindr::cvd_grid()
+ggsave(
+  plot = p_mirrored,
+  filename = "2026/output/stacked_mirrored.png",
+  width = 8,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
 
-ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
+p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   geom_line(aes(color = line_colour, linewidth = is_acinetobacter)) +
   geom_point(aes(color = line_colour, size = is_acinetobacter)) +
   labs(
@@ -471,35 +494,34 @@ ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   scale_y_continuous(limits = c(0, 112)) +
   geom_text_repel(
     data = pre_labels,
-    aes(label = label, color = label_colour, fontface = label_face),
+    aes(label = label, color = label_colour, fontface = label_face, size = label_size),
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
     segment.color = NA,
     family = font,
-    size = 2.8224,
     show.legend = FALSE
   ) +
   geom_text_repel(
     data = post_labels,
-    aes(label = label, color = label_colour, fontface = label_face),
+    aes(label = label, color = label_colour, fontface = label_face, size = label_size),
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
     segment.color = NA,
     family = font,
-    size = 2.8224,
     show.legend = FALSE
   ) +
+  scale_size_identity() +
   annotate(
     "text",
     x = c(1, 2),
     y = 108,
     label = c("Pre-COVID-19", "Post-COVID-19"),
     family = font,
-    fontface = "bold",
-    color = text_col,
-    size = 3.2
+    fontface = "plain",
+    color = grey_text_colour,
+    size = 2.8
   ) +
   theme_minimal(base_family = font, base_size = 10) +
   theme(
@@ -513,7 +535,8 @@ ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
       margin = margin(b = 10)
     ),
     plot.caption = element_textbox_simple(
-      color = text_col,
+      color = grey_text_colour,
+      size = 8,
       hjust = 0,
       margin = margin(t = 10)
     ),
@@ -523,3 +546,14 @@ ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
+
+ggsave(
+  plot = p_horizontal,
+  filename = "2026/output/stacked_horizontal.png",
+  width = 8,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
