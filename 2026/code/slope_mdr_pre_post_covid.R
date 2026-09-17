@@ -17,7 +17,7 @@ text_col <- "#3b3b3b"
 bg_col <- "white"
 
 
-highlight_colour <- "#D55E00"
+highlight_colour <- "#f16913"
 grey_colour <- "grey75"
 grey_text_colour <- "grey50"
 
@@ -45,9 +45,7 @@ mdr_data <- mdr_data |>
       is_acinetobacter,
       highlight_colour,
       grey_text_colour
-    ),
-    label_face = if_else(is_acinetobacter, "bold", "plain"),
-    label_size = if_else(is_acinetobacter, 3.2, 2.6)
+    )
   )
 
 pre_labels <- mdr_data |>
@@ -493,26 +491,51 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   scale_x_continuous(limits = c(-2.4, 3.7)) +
   scale_y_continuous(limits = c(0, 112)) +
   geom_text_repel(
-    data = pre_labels,
-    aes(label = label, color = label_colour, fontface = label_face, size = label_size),
+    data = filter(pre_labels, !is_acinetobacter),
+    aes(label = label, color = label_colour),
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
     segment.color = NA,
     family = font,
+    size = 2.6,
     show.legend = FALSE
   ) +
   geom_text_repel(
-    data = post_labels,
-    aes(label = label, color = label_colour, fontface = label_face, size = label_size),
+    data = filter(pre_labels, is_acinetobacter),
+    aes(label = label, color = label_colour),
+    hjust = 1,
+    direction = "y",
+    nudge_x = -0.1,
+    segment.color = NA,
+    family = font,
+    fontface = "bold",
+    size = 3.2,
+    show.legend = FALSE
+  ) +
+  geom_text_repel(
+    data = filter(post_labels, !is_acinetobacter),
+    aes(label = label, color = label_colour),
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
     segment.color = NA,
     family = font,
+    size = 2.6,
     show.legend = FALSE
   ) +
-  scale_size_identity() +
+  geom_text_repel(
+    data = filter(post_labels, is_acinetobacter),
+    aes(label = label, color = label_colour),
+    hjust = 0,
+    direction = "y",
+    nudge_x = 0.1,
+    segment.color = NA,
+    family = font,
+    fontface = "bold",
+    size = 3.2,
+    show.legend = FALSE
+  ) +
   annotate(
     "text",
     x = c(1, 2),
