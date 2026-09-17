@@ -19,9 +19,14 @@ bg_col <- "white"
 
 highlight_colour <- "#f16913"
 grey_colour <- "grey75"
-grey_text_colour <- "grey50"
+grey_text_colour <- "grey25"
+label_grey <- "grey65"
 
-plot_title <- "MDR decreased across ICU pathogens post-COVID, but Acinetobacter spp. had the greatest proportion of MDR isolates"
+plot_title <- glue::glue(
+  "MDR decreased across ICU pathogens post-COVID, but ",
+  "<span style='color:{highlight_colour};'>Acinetobacter spp.</span> ",
+  "had the greatest proportion of MDR isolates"
+)
 
 mdr_data <- read_csv("2026/data/amr_mdr_pdr_pre_post_covid.csv") |>
   filter(category %in% c("MDR", "PDR"), species != "Other") |>
@@ -44,17 +49,19 @@ mdr_data <- mdr_data |>
     label_colour = if_else(
       is_acinetobacter,
       highlight_colour,
-      grey_text_colour
+      label_grey
     )
   )
 
+y_max <- max(mdr_data$percentage)
+
 pre_labels <- mdr_data |>
   filter(period == "Pre-COVID-19") |>
-  mutate(label = glue::glue("{species} ({round(percentage, 1)}%)"))
+  mutate(label = glue::glue("{round(percentage, 1)}%"))
 
 post_labels <- mdr_data |>
   filter(period == "Post-COVID-19") |>
-  mutate(label = glue::glue("{round(percentage, 1)}%"))
+  mutate(label = glue::glue("{species} {round(percentage, 1)}%"))
 
 stack_data <- read_csv("2026/data/amr_mdr_pdr_pre_post_covid.csv") |>
   mutate(
@@ -405,7 +412,7 @@ period_labels <- mirror_data |>
     x = if_else(period == "Pre-COVID-19", -x, x)
   )
 
-ggplot(mirror_data) +
+p_mirrored <- ggplot(mirror_data) +
   geom_rect(
     aes(
       ymin = y_num - 0.4,
@@ -478,7 +485,6 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   geom_point(aes(color = line_colour, size = is_acinetobacter)) +
   labs(
     title = plot_title,
-    caption = "Data: Golli et al. (2024), Pharmaceuticals 17(4):407",
     x = NULL,
     y = NULL
   ) +
@@ -488,14 +494,19 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     guide = "none"
   ) +
   scale_size_manual(values = c(`TRUE` = 3, `FALSE` = 2), guide = "none") +
-  scale_x_continuous(limits = c(-2.4, 3.7)) +
-  scale_y_continuous(limits = c(0, 112)) +
+  scale_x_continuous(
+    limits = c(0.9, 2.1),
+    expand = expansion(mult = 0, add = 0)
+  ) +
+  scale_y_continuous(limits = c(0, y_max + 12)) +
+  coord_cartesian(clip = "off") +
   geom_text_repel(
     data = filter(pre_labels, !is_acinetobacter),
     aes(label = label, color = label_colour),
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
+    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     size = 2.6,
@@ -507,6 +518,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
+    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     fontface = "bold",
@@ -515,22 +527,28 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   ) +
   geom_text_repel(
     data = filter(post_labels, !is_acinetobacter),
-    aes(label = label, color = label_colour),
+    aes(label = label, color = label_colour, segment.color = label_colour),
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
-    segment.color = NA,
+    xlim = c(NA, NA),
+    segment.size = 0.3,
+    segment.alpha = 0.6,
+    min.segment.length = 0,
     family = font,
     size = 2.6,
     show.legend = FALSE
   ) +
   geom_text_repel(
     data = filter(post_labels, is_acinetobacter),
-    aes(label = label, color = label_colour),
+    aes(label = label, color = label_colour, segment.color = label_colour),
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
-    segment.color = NA,
+    xlim = c(NA, NA),
+    segment.size = 0.3,
+    segment.alpha = 0.6,
+    min.segment.length = 0,
     family = font,
     fontface = "bold",
     size = 3.2,
@@ -539,7 +557,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   annotate(
     "text",
     x = c(1, 2),
-    y = 108,
+    y = y_max + 6,
     label = c("Pre-COVID-19", "Post-COVID-19"),
     family = font,
     fontface = "plain",
@@ -550,18 +568,12 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   theme(
     legend.position = "none",
     plot.title.position = "plot",
-    plot.margin = margin(10, 10, 10, 10),
+    plot.margin = margin(5, 190, 10, 45),
     plot.title = element_textbox_simple(
       color = text_col,
       face = "bold",
       size = 13,
-      margin = margin(b = 10)
-    ),
-    plot.caption = element_textbox_simple(
-      color = grey_text_colour,
-      size = 8,
-      hjust = 0,
-      margin = margin(t = 10)
+      margin = margin(b = 4)
     ),
     panel.grid = element_blank(),
     axis.text = element_blank(),
@@ -570,6 +582,8 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 
+p_slope
+record_polaroid()
 ggsave(
   plot = p_horizontal,
   filename = "2026/output/stacked_horizontal.png",
