@@ -1,0 +1,8 @@
+/.luarc.json
+.quarto/
+.git/
+_extensions/
+references.csv
+/.quarto/
+**/*.quarto_ipynb
+data/

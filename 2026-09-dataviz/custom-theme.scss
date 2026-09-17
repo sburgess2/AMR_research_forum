@@ -1,0 +1,138 @@
+/*-- scss:defaults --*/
+
+$brand-green: #55692f;
+$brand-green-dark: #0b0f08;
+$brand-green-mid: #303c1c;
+$title-chart-grey: #d5d5d5;
+$title-chart-highlight: #a0ba29;
+
+$body-bg: #ffffff;
+$body-color: $brand-green;
+$link-color: $brand-green;
+$presentation-heading-color: #ffffff;
+$presentation-font-size-root: 32px;
+
+/*-- scss:rules --*/
+
+.reveal .slides section,
+.reveal .slides section > section {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  position: relative;
+  color: #ffffff;
+  background-color: $brand-green-mid;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 0.6em 0;
+  padding: 0.3em 0.5em;
+  text-align: left;
+}
+
+.reveal .slides section#title-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  padding: 3em 3em 9em 3em;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(to bottom, $brand-green-dark 0%, $brand-green 50%, $brand-green-dark 100%);
+  overflow: hidden;
+}
+
+.reveal #title-slide h1.title {
+  color: #ffffff;
+  background-color: transparent;
+  width: auto;
+  max-width: 85%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 0.5em 0;
+  line-height: 1.15;
+}
+
+.reveal #title-slide .subtitle {
+  color: #ffffff;
+  opacity: 0.85;
+  font-weight: 400;
+  max-width: 75%;
+  margin: 0 0 1em 0;
+}
+
+.reveal #title-slide .author,
+.reveal #title-slide .institute,
+.reveal #title-slide .date {
+  color: #ffffff;
+  opacity: 0.9;
+  margin: 0 0 0.2em 0;
+}
+
+.reveal #title-slide .title-charts {
+  position: absolute;
+  left: 3em;
+  right: 3em;
+  bottom: 1.5em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1.2em;
+  pointer-events: none;
+}
+
+.reveal #title-slide .title-chart {
+  flex: 1 1 0;
+  max-width: 150px;
+  height: auto;
+  overflow: visible;
+}
+
+.reveal #title-slide .title-chart-grey {
+  stroke: $title-chart-grey;
+  fill: $title-chart-grey;
+}
+
+.reveal #title-slide .title-chart-highlight {
+  stroke: $title-chart-highlight;
+  fill: $title-chart-highlight;
+}
+
+.reveal #title-slide .title-chart-line {
+  stroke: $title-chart-grey;
+  fill: none;
+}
+
+.reveal #title-slide .title-chart-line-highlight {
+  stroke: $title-chart-highlight;
+  fill: none;
+}
+
+.reveal p,
+.reveal li,
+.reveal a {
+  color: $brand-green;
+}
+
+.reveal a {
+  text-decoration: underline;
+}
+
+.reveal ul li::marker,
+.reveal ol li::marker {
+  color: $brand-green;
+}
+
+.reveal .placeholder-note {
+  font-style: italic;
+  font-size: 0.6em;
+  opacity: 0.75;
+}
+

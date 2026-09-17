@@ -11,8 +11,6 @@ format:
     transition: fade
     template-partials:
       - title-slide.html
-    include-after-body: eye-annotations.html
-
 ---
 
 ## My research
@@ -307,7 +305,7 @@ Clear message
 
 Clear message, text hierarchy
 
-![](output/stacked_slope.png)
+![](output/stacked_slopegraph.png)
 
 
 ## Resources
