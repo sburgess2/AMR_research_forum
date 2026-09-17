@@ -1,8 +1,9 @@
 ---
-title: "Visualising AMR data for scientific communication"
+title: "Visualising AMR data effectively"
+subtitle: "AMR Research Forum"
 author: "Sara Burgess"
-date: last-modified
-date-format: "MMMM YYYY"
+date: 09/21/2026
+date-format: "DD MMMM YYYY"
 format:
   revealjs:
     theme: [default, custom-theme.scss]
@@ -10,49 +11,32 @@ format:
     transition: fade
     template-partials:
       - title-slide.html
-    revealjs-plugins:
-      - imagemover
     include-after-body: eye-annotations.html
 revealjs-plugins:
   - editable
+  - tldraw
 filters:
-  - roughnotation
   - more-fragments
   - editable
 ---
 
 
+## About me
 
-## Outline
+- Microbiologist and data visualisation consultant/freelancer
 
-- Interactive session
-- Graph makeovers
+- Part-time research officer in the mEpiLab, School of Veterinary Science, Massey University
 
-::: {.notes}
-Talk about why generating clear visuals is important - particularly in the field of AMR when we're communicating to the general public. 
-But also to other scientists, health professionals, government agencies, funding agencies 
-:::
+- Certificate in Applied Statistics and self taught data visualisation specialist
 
-## My background
+- PhD in Microbiology
 
-- Microbiologist
-- Self-taught data visualisation specialist
+- Academic and industry experience in microbiology and genomics
 
 ![](images/data.png)
 
-## My research
-
-- 
-
-![](images/research.png)
-
-::: {.notes}
-Use a one health image
-:::
 
 ## My research
-
-- 
 
 ![](images/research.png)
 
@@ -60,114 +44,133 @@ Use a one health image
 Add in an image of Bhutan, dairy calf, river
 :::
 
-## Presenting data clearly
-
-Are you presenting your data your data clearly?
-Is your key message clear?
-
-![](images/CedricScherer_USviews_votes_simpsons.jpg)
-
-::: {.notes}
-Ask the audience to describe how they feel when they look at this image with too many colours.
-Today we're going to work through a couple of examples of how to declutter and format your graphs so that the audience/reader is clear where they're supposed to look and what the key message is of the graph
-:::
 
 ## Presenting data clearly
+
+No clutter
 
 ::: {#filename filename="data-viz-examples.qmd"}
-:::
-
-::: {.fragment .exclusive-fragment fragment-index=1}
-No clutter
-:::
-
-::: {.fragment .exclusive-fragment fragment-index=2}
-Colour with purpose
-:::
-
-::: {.fragment .exclusive-fragment fragment-index=3}
-Reduce eye movement
-:::
-
-::: {.fragment .exclusive-fragment fragment-index=4}
-Text hierarchy
-:::
-
-::: {.fragment .exclusive-fragment fragment-index=5}
-Clear takeaway message
 :::
 
 :::: columns
 
 ::: {.column width="50%"}
-::: {.annotation-frame}
 ![](images/line-chart-with-labels_CScherer.png)
 
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#2563eb"}
-![](images/spacer.png){#imagemover}
-:::
-
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#f97316"}
-![](images/spacer.png){#imagemover}
-:::
-
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=4 rn-type=circle rn-color="#2563eb"}
-![](images/spacer.png){#imagemover}
-:::
+::: {.placeholder-note}
+Image source: [Cedric Scherer, Big Mac Index](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_52)
 :::
 :::
 
 ::: {.column width="50%"}
-::: {.annotation-frame}
-![](images/VitC_CThompson.jpeg)
+![](output/vitc_tooth_growth.png)
 
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=2 rn-type=circle rn-color="#dc2626"}
-![](images/spacer.png){#imagemover}
-:::
-
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#2563eb"}
-![](images/spacer.png){#imagemover}
-:::
-
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=3 rn-type=circle rn-color="#f97316"}
-![](images/spacer.png){#imagemover}
-:::
-
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=4 rn-type=circle rn-color="#2563eb"}
-![](images/spacer.png){#imagemover}
-:::
-
-::: {.fragment .eye-annotation .exclusive-fragment fragment-index=5 rn-type=circle rn-color="#7c3aed"}
-![](images/spacer.png){#imagemover}
-:::
+::: {.placeholder-note}
+Image source: [Cara Thompson 2023. "Level up your plots"](https://www.cararthompson.com/talks/rladies-edinburgh-level-up-your-plots/)
 :::
 :::
 
 ::::::
 
-::: {.notes}
-Ask audience what they think works well with these graphs. Colour with purpose
-  - Less is more
-  - Accessible colours
-  - Transparency
-  Reduce eye movement
-  - Left aligned text
-  - Label directly
-  - Horizontal text
+## Presenting data clearly
 
-Circle positions: preview this slide, drag/resize each transparent overlay box
-(hover to reveal its handles) onto the relevant title, subtitle, or labels,
-then open the slide menu and choose "Save Moved Images" to write the
-positions back into this file.
+Colour with purpose
+
+:::: columns
+
+::: {.column width="50%"}
+![](images/line-chart-with-labels_CScherer.png)
 :::
 
-## Where do you look?
+::: {.column width="50%"}
+![](output/vitc_tooth_growth.png)
+:::
+
+::::::
+
+::: {.notes}
+Less is more
+Accessible colours
+Transparency
+:::
+
+## Presenting data clearly
+
+Reduce eye movement
+
+:::: columns
+
+::: {.column width="50%"}
+![](images/line-chart-with-labels_CScherer.png)
+:::
+
+::: {.column width="50%"}
+![](output/vitc_tooth_growth.png)
+:::
+
+::::::
+
+::: {.notes}
+Left aligned text
+Label directly
+Horizontal text
+:::
+
+## Presenting data clearly
+
+Text hierarchy
+
+:::: columns
+
+::: {.column width="50%"}
+![](images/line-chart-with-labels_CScherer.png)
+
+::: {.placeholder-note}
+Image source: [Big Mac Index, Cedric Scherer](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_52)
+:::
+:::
+
+::: {.column width="50%"}
+![](output/vitc_tooth_growth.png)
+
+::: {.placeholder-note}
+Chart by [Cara Thompson](https://github.com/cararthompson/rmedicine2023-workshop/blob/main/level-up-workshop.qmd)
+:::
+:::
+
+::::::
+
+## Presenting data clearly
+
+Clear takeaway message
+
+:::: columns
+
+::: {.column width="50%"}
+![](images/line-chart-with-labels_CScherer.png)
+
+::: {.placeholder-note}
+Image source: [Big Mac Index, Cedric Scherer](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_52)
+:::
+:::
+
+::: {.column width="50%"}
+![](output/vitc_tooth_growth.png)
+
+::: {.placeholder-note}
+Chart by [Cara Thompson](https://github.com/cararthompson/rmedicine2023-workshop/blob/main/level-up-workshop.qmd)
+:::
+:::
+
+::::::
+
+## Presenting data clearly?
 
 Annotations to highlight observations
-::: {.incremental}
+
 
 ![](images/CedricScherer_USviews_votes_simpsons.png)
-:::
+
 
 ::: {.notes}
 Your private presenter notes go here.
@@ -178,12 +181,31 @@ Put up an AMR related graph, then follow the same approach that Alex does from d
 
 ![](images/fmicb-12-743939-g004.webp)
 
+::: {.placeholder-note}
+Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
+:::
+
+## The Visual Dictionary of Stewardship
+
+:::: columns
+
+::: {.column width="50%"}
+![](images/VisualDictionary.png)
+:::
+
+::: {.column width="50%"}
+![](images/fmicb-12-743939-g006.webp)
+:::
+
+::::
+
+
 ::: {.notes}
 Ask the audience to describe how they feel when they look at this image with too many colours. Explain this is dummy data from a paper that analyses AMR data visualisations.
 Today we're going to work through a couple of examples of how to declutter and format your graphs so that the audience/reader is clear where they're supposed to look and what the key message is of the graph
 :::
 
-
+## Who is your audience?
 
 
 ## Makeover
@@ -194,7 +216,7 @@ Before moving to next slide ask audience what clutter they would remove
 
 ![](output/stacked_original.png)
 
-::: placeholder-note
+::: {.placeholder-note}
 Image source: [Golli et al 2024 ](https://www.mdpi.com/1424-8247/17/4/407)
 :::
 
@@ -202,7 +224,7 @@ Image source: [Golli et al 2024 ](https://www.mdpi.com/1424-8247/17/4/407)
 
 Lets declutter
 
-::: {.fragment .jackInTheBox}
+::: {.fragment}
 ![](output/stacked_declutter.png)
 :::
 
@@ -210,32 +232,90 @@ Lets declutter
 Before moving to next slide ask audience how they would colour with purpose
 :::
 
-## The elements of a graph
+## Makeover
+
+- Colour with purpose [image color picker](https://imagecolorpicker.com/)
+
+
+![](images/honzot-traffic-lights.png){height="450px"}
 
 ::: {.notes}
 Add in here an example of a graph with the features of a clear visual
 :::
 
-## What I am doing
+## Makeover
 
-::: {.fragment .jackInTheBox}
-{{< bi hand-thumbs-up-fill color=#7b9324 >}} Follow similar people - other data visualisation specialists
+- Colour with purpose [image color picker](https://imagecolorpicker.com/)
+
+::: {.fragment fragment-index="1"}
+- Less is more
 :::
 
-::: {.fragment .jackInTheBox}
-{{< bi hand-thumbs-up-fill color=#7b9324 >}} Post regularly
+::: {.fragment fragment-index="2"}
+- Use accessible colour palettes
 :::
 
-::: {.fragment .jackInTheBox}
-{{< bi hand-thumbs-up-fill color=#7b9324 >}} Share relevant content
+:::: columns
+
+::: {.column width="50%"}
+
+![](images/Rgraph-gallery-color.png){.fragment fragment-index="2"}
+
+::: {.placeholder-note}
+Image source: [R Graph Gallery, Colour Palette Finder](https://r-graph-gallery.com/color-palette-finder)
 :::
+
+:::
+
+::: {.column width="50%"}
+
+![](images/viz-palette.png){.fragment fragment-index="2"}
+
+::: {.placeholder-note}
+Image source: [Viz Palette, Susie Lu](https://projects.susielu.com/viz-palette)
+:::
+
+:::
+
+::::
+
+## Makeover
+
+Colour with purpose
+
+![](output/stacked_colour.png)
+
+## Makeover
+
+Reduce eye movement
+
+![](output/stacked_reordered.png)
+
+## Makeover
+
+Reduce eye movement
+
+![](output/stacked_horizontal.png)
+
+## Makeover
+
+Clear message
+
+![](output/stacked_mirrored.png)
+
+## Makeover
+
+Clear message, text hierarchy
+
+![](output/stacked_slope.png)
 
 
 ## Resources
 
 ::: {.incremental}
-- Storytelling with Data
-- [The Visual Dictory of Antimicrobial Stewardship, Infection Control and Institutional Surveillance Data](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full) 
+- [Storytelling with Data](https://www.storytellingwithdata.com/)
+- [The Visual Dictory of Antimicrobial Stewardship, Infection Control and Institutional Surveillance Data](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
+- [R Graph Gallery - Top R Graph Examples] (https://r-graph-gallery.com/best-r-chart-examples.html)
 :::
 
 ## Summary
