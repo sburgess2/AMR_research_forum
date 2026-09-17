@@ -494,10 +494,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     guide = "none"
   ) +
   scale_size_manual(values = c(`TRUE` = 3, `FALSE` = 2), guide = "none") +
-  scale_x_continuous(
-    limits = c(0.9, 2.1),
-    expand = expansion(mult = 0, add = 0)
-  ) +
+  scale_x_continuous(limits = c(0.6, 6.3)) +
   scale_y_continuous(limits = c(0, y_max + 12)) +
   coord_cartesian(clip = "off") +
   geom_text_repel(
@@ -506,7 +503,6 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
-    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     size = 2.6,
@@ -518,7 +514,6 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
-    xlim = c(NA, NA),
     segment.color = NA,
     family = font,
     fontface = "bold",
@@ -527,28 +522,22 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   ) +
   geom_text_repel(
     data = filter(post_labels, !is_acinetobacter),
-    aes(label = label, color = label_colour, segment.color = label_colour),
+    aes(label = label, color = label_colour),
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
-    xlim = c(NA, NA),
-    segment.size = 0.3,
-    segment.alpha = 0.6,
-    min.segment.length = 0,
+    segment.color = NA,
     family = font,
     size = 2.6,
     show.legend = FALSE
   ) +
   geom_text_repel(
     data = filter(post_labels, is_acinetobacter),
-    aes(label = label, color = label_colour, segment.color = label_colour),
+    aes(label = label, color = label_colour),
     hjust = 0,
     direction = "y",
     nudge_x = 0.1,
-    xlim = c(NA, NA),
-    segment.size = 0.3,
-    segment.alpha = 0.6,
-    min.segment.length = 0,
+    segment.color = NA,
     family = font,
     fontface = "bold",
     size = 3.2,
@@ -568,7 +557,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   theme(
     legend.position = "none",
     plot.title.position = "plot",
-    plot.margin = margin(5, 190, 10, 45),
+    plot.margin = margin(6, 10, 10, 10),
     plot.title = element_textbox_simple(
       color = text_col,
       face = "bold",
