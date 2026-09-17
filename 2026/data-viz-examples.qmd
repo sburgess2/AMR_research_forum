@@ -12,18 +12,17 @@ format:
     template-partials:
       - title-slide.html
     include-after-body: eye-annotations.html
-revealjs-plugins:
-  - editable
-  - tldraw
-filters:
-  - more-fragments
-  - editable
+#revealjs-plugins:
+ # - editable
+ # - tldraw
+#filters:
+ # - more-fragments
+  #- editable
 ---
-
 
 ## About me
 
-- Microbiologist and data visualisation consultant/freelancer
+- Microbiologist and data visualisation consultant
 
 - Part-time research officer in the mEpiLab, School of Veterinary Science, Massey University
 
@@ -33,17 +32,9 @@ filters:
 
 - Academic and industry experience in microbiology and genomics
 
-![](images/data.png)
-
-
 ## My research
 
 ![](images/research.png)
-
-::: {.notes}
-Add in an image of Bhutan, dairy calf, river
-:::
-
 
 ## Presenting data clearly
 
@@ -168,9 +159,7 @@ Chart by [Cara Thompson](https://github.com/cararthompson/rmedicine2023-workshop
 
 Annotations to highlight observations
 
-
-![](images/CedricScherer_USviews_votes_simpsons.png)
-
+![](images/CedricScherer_USviews_votes_simpsons.jpg)
 
 ::: {.notes}
 Your private presenter notes go here.
@@ -179,11 +168,26 @@ Put up an AMR related graph, then follow the same approach that Alex does from d
 
 ## How do you feel?
 
+:::: columns
+
+::: {.column width="50%"}
+
 ![](images/fmicb-12-743939-g004.webp)
 
 ::: {.placeholder-note}
 Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
 :::
+
+:::
+::: {.column width="50%"}
+
+- 150 visualisations analysed
+- 44% required additional text to explain visual
+- 23% unreadable axes
+- 18% inconsistent colour schemes
+- 10% incorrect graph choice
+:::
+
 
 ## The Visual Dictionary of Stewardship
 
