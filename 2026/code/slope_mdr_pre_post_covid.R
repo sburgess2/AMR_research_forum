@@ -208,16 +208,11 @@ purposeful_colours <- c(
 )
 
 purposeful_colours <- c(
-  "MDR" = "#E3B23C",
-  "PDR" = "#C1550E",
+  "MDR" = "#fab909",
+  "PDR" = "#cd7058",
   "NON-MDR/PDR" = "#D9D9D9"
 )
 
-purposeful_colours <- c(
-  "MDR" = "#e8cd87",
-  "PDR" = "#f38466",
-  "NON-MDR/PDR" = "#D9D9D9"
-)
 
 #727272
 #f1595f
@@ -228,7 +223,10 @@ purposeful_colours <- c(
 #cd7058
 #d77fb3
 
-ggplot(declutter_data, aes(x = species, y = percentage, fill = category)) +
+p_colour <- ggplot(
+  declutter_data,
+  aes(x = species, y = percentage, fill = category)
+) +
   geom_col(
     position = position_stack(reverse = TRUE),
     width = 0.65,
@@ -265,6 +263,17 @@ ggplot(declutter_data, aes(x = species, y = percentage, fill = category)) +
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
+p_colour
+ggsave(
+  plot = p_colour,
+  filename = "2026/output/stacked_colour.png",
+  width = 8,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
 
 reordered_species <- declutter_data |>
   filter(period == "Pre-COVID-19", category %in% c("MDR", "PDR")) |>
@@ -276,7 +285,10 @@ reordered_species <- declutter_data |>
 reordered_data <- declutter_data |>
   mutate(species = factor(as.character(species), levels = reordered_species))
 
-ggplot(reordered_data, aes(x = species, y = percentage, fill = category)) +
+p_reorderd <- ggplot(
+  reordered_data,
+  aes(x = species, y = percentage, fill = category)
+) +
   geom_col(
     position = position_stack(reverse = TRUE),
     width = 0.65,
@@ -313,6 +325,66 @@ ggplot(reordered_data, aes(x = species, y = percentage, fill = category)) +
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
+
+ggsave(
+  plot = p_colour,
+  filename = "2026/output/stacked_reordered.png",
+  width = 8,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
+
+p_horizontal <- ggplot(
+  reordered_data,
+  aes(x = species, y = percentage, fill = category)
+) +
+  geom_col(
+    position = position_stack(reverse = TRUE),
+    width = 0.65,
+    color = "white",
+    linewidth = 0.3
+  ) +
+  facet_wrap(~period, ncol = 1, strip.position = "top") +
+  scale_fill_manual(values = purposeful_colours, name = NULL) +
+  scale_y_continuous(
+    labels = scales::label_percent(scale = 1),
+    breaks = seq(0, 100, 25),
+    expand = expansion(mult = c(0, 0.02))
+  ) +
+  labs(x = NULL, y = NULL) +
+  coord_flip() +
+  theme_minimal(base_family = font, base_size = 10) +
+  theme(
+    legend.position = "top",
+    legend.justification = "left",
+    legend.title = element_blank(),
+    legend.key.size = unit(0.8, "lines"),
+    legend.text = element_text(size = 8, color = text_col),
+    axis.text.x = element_text(color = text_col),
+    axis.text.y = element_text(color = text_col),
+    strip.placement = "outside",
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", color = text_col, hjust = 0),
+    panel.grid = element_blank(),
+    panel.spacing = unit(10, "pt"),
+    panel.background = element_rect(fill = bg_col, color = bg_col),
+    plot.background = element_rect(fill = bg_col, color = bg_col)
+  )
+p_horizontal
+
+ggsave(
+  plot = p_horizontal,
+  filename = "2026/output/stacked_horizontal.png",
+  width = 8,
+  height = 6,
+  unit = "in",
+  bg = bg_col,
+  dpi = 300,
+  device = agg_png
+)
 
 mirror_data <- reordered_data |>
   mutate(
