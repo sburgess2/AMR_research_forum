@@ -56,9 +56,16 @@ Image source: [Cara Thompson 2023. "Level up your plots"](https://www.cararthomp
 
 ::::::
 
+::: {.notes}
+No borders
+Grey background
+Gridlines
+Excess labels
+:::
+
 ## Presenting data clearly
 
-Colour with purpose
+Colour effectively
 
 :::: columns
 
@@ -73,6 +80,7 @@ Colour with purpose
 ::::::
 
 ::: {.notes}
+Colour with purpose
 Less is more
 Accessible colours
 Transparency
@@ -102,7 +110,7 @@ Horizontal text
 
 ## Presenting data clearly
 
-Text hierarchy
+Clear takeaway message
 
 :::: columns
 
@@ -126,29 +134,20 @@ Chart by [Cara Thompson](https://github.com/cararthompson/rmedicine2023-workshop
 
 ## Presenting data clearly
 
-Clear takeaway message
+Text hierarchy
 
 :::: columns
 
-::: {.column width="50%"}
-![](images/line-chart-with-labels_CScherer.png)
+![](images/CedricScherer_USviews_votes_simpsons.jpg)
 
-::: {.placeholder-note}
-Image source: [Big Mac Index, Cedric Scherer](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_52)
-:::
-:::
-
-::: {.column width="50%"}
-![](output/vitc_tooth_growth.png)
-
-::: {.placeholder-note}
-Chart by [Cara Thompson](https://github.com/cararthompson/rmedicine2023-workshop/blob/main/level-up-workshop.qmd)
-:::
+::: {.notes}
+Title in black
+Subtitle dark grey
+Axis titles in lighter grey
+Guides the eye from the top to the bottom
 :::
 
-::::::
-
-## Presenting data clearly?
+## Presenting data clearly
 
 Annotations to highlight observations
 
@@ -307,13 +306,40 @@ Clear message, text hierarchy
 
 ![](output/stacked_slopegraph.png)
 
+## Graph alternatives
+
+::: {layout="[[42, 16, 42], [42, 16, 42], [42, 16, 42], [42, 16, 42]]" layout-valign="center"}
+![](output/ex_stacked_bar.png){height="130px"}
+
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+
+![](output/alt_line.png){height="130px"}
+
+![](output/ex_bar_errorbars.png){height="130px"}
+
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+
+![](output/species_resistance_beeswarm.png){height="130px"}
+
+![](output/antibiotic_consumption_bad_errorbars.png){height="130px"}
+
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+
+![](output/alt_ribbon.png){height="130px"}
+
+![](output/stewardship_bad_clustered_bar.png){height="130px"}
+
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+
+![](output/alt_diverging_stacked_bar.png){height="130px"}
+:::
 
 ## Resources
 
 ::: {.incremental}
 - [Storytelling with Data](https://www.storytellingwithdata.com/)
 - [The Visual Dictory of Antimicrobial Stewardship, Infection Control and Institutional Surveillance Data](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
-- [R Graph Gallery - Top R Graph Examples] (https://r-graph-gallery.com/best-r-chart-examples.html)
+- [R Graph Gallery - Top R Graph Examples](https://r-graph-gallery.com/best-r-chart-examples.html)
 :::
 
 ## Summary
