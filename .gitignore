@@ -2,8 +2,9 @@
 .quarto/
 .git/
 _extensions/
-references.csv
+2026/references.csv
 /.quarto/
 **/*.quarto_ipynb
-data/
-2026-09-dataviz/data-viz-examples_files
+2026-09-dataviz/data/
+2026-09-dataviz/data-viz-examples_files/
+TalkNotes.docx
