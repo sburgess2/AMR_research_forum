@@ -6,7 +6,7 @@ library(ggtintshade)
 
 gg_record(
   device = "png",
-  width = 9,
+  width = 8,
   height = 6,
   unit = "in",
   dpi = 300
@@ -34,7 +34,9 @@ species_colours <- c(
   "Other" = "#E5C494"
 )
 
-composition_data <- read_csv("2026/data/bacteria_composition_dummy.csv") |>
+composition_data <- read_csv(
+  "2026-09-dataviz/data/bacteria_composition_dummy.csv"
+) |>
   mutate(species = factor(species, levels = species_levels))
 
 stacked_bar <- ggplot(
@@ -48,20 +50,22 @@ stacked_bar <- ggplot(
   ) +
   scale_fill_manual(values = species_colours, name = NULL) +
   labs(x = NULL, y = NULL) +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
     legend.position = "none",
-    axis.text = element_text(color = text_col),
+    axis.text = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 stacked_bar
+
+record_polaroid()
 ggsave(
   plot = stacked_bar,
-  filename = "2026/output/bacteria_composition_stacked_bar.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/ex_stacked_bar.png",
+  width = 8,
   height = 6,
   unit = "in",
   bg = bg_col,
@@ -94,7 +98,7 @@ small_multiples <- ggplot(
     linewidth = 0.6,
     inherit.aes = FALSE
   ) +
-  geom_line(aes(colour = species), linewidth = 1.1) +
+  geom_line(aes(colour = species), linewidth = 1.8) +
   #geom_point(aes(colour = species), size = 1.8) +
   facet_wrap(~species, nrow = 2) +
   scale_x_continuous(breaks = seq(2016, 2025, 3)) +
@@ -106,10 +110,10 @@ small_multiples <- ggplot(
   ) +
   scale_colour_manual(values = species_colours, guide = "none") +
   labs(x = NULL, y = NULL) +
-  theme_minimal(base_family = font, base_size = 11) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
-    axis.text = element_text(size = 8, color = text_col),
-    axis.title.y = element_text(color = text_col),
+    axis.text = element_text(size = 12, color = text_col),
+    axis.title.y = element_text(size = 12, color = text_col),
     strip.text = element_blank(),
     strip.background = element_blank(),
     panel.grid.minor = element_blank(),
@@ -119,10 +123,12 @@ small_multiples <- ggplot(
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 small_multiples
+
+record_polaroid()
 ggsave(
   plot = small_multiples,
-  filename = "2026/output/bacteria_composition_small_multiples.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/alt_line.png",
+  width = 8,
   height = 6,
   unit = "in",
   bg = bg_col,
@@ -197,20 +203,27 @@ bar_with_errorbars <- ggplot(
   ) +
   scale_fill_manual(values = resistance_colours, guide = "none") +
   labs(x = NULL, y = NULL) +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1, color = text_col),
-    axis.text.y = element_text(color = text_col),
+    axis.text.x = element_text(
+      size = 12,
+      angle = 45,
+      hjust = 1,
+      color = text_col
+    ),
+    axis.text.y = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 bar_with_errorbars
+
+record_polaroid()
 ggsave(
   plot = bar_with_errorbars,
-  filename = "2026/output/species_resistance_bar_errorbars.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/ex_bar_errorbars.png",
+  width = 8,
   height = 6,
   unit = "in",
   bg = bg_col,
@@ -265,20 +278,21 @@ beeswarm_plot <- ggplot(
     expand = expansion(mult = c(0, 0.02))
   ) +
   labs(x = NULL, y = NULL) +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
-    axis.text.x = element_text(color = text_col),
-    axis.text.y = element_text(color = text_col),
-    axis.title.y = element_text(color = text_col),
+    axis.text.x = element_text(size = 12, color = text_col),
+    axis.text.y = element_text(size = 12, color = text_col),
+    axis.title.y = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 beeswarm_plot
+record_polaroid()
 ggsave(
   plot = beeswarm_plot,
-  filename = "2026/output/species_resistance_beeswarm.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/species_resistance_beeswarm.png",
+  width = 8,
   height = 6,
   unit = "in",
   bg = bg_col,
@@ -288,7 +302,9 @@ ggsave(
 
 antibiotic_levels <- c("Antibiotic 1", "Antibiotic 2")
 
-consumption_data <- read_csv("2026/data/antibiotic_consumption_dummy.csv") |>
+consumption_data <- read_csv(
+  "2026-09-dataviz/data/antibiotic_consumption_dummy.csv"
+) |>
   mutate(antibiotic = factor(antibiotic, levels = antibiotic_levels))
 
 bad_line_errorbars <- ggplot(
@@ -303,13 +319,15 @@ bad_line_errorbars <- ggplot(
   ) +
   scale_x_continuous(breaks = seq(2016, 2025, 3)) +
   labs(x = NULL, y = NULL) +
-  theme_grey(base_size = 11)
+  theme_grey(base_size = 12) +
+  theme(axis.text = element_text(size = 12))
 
 bad_line_errorbars
+record_polaroid()
 ggsave(
   plot = bad_line_errorbars,
-  filename = "2026/output/antibiotic_consumption_bad_errorbars.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/antibiotic_consumption_bad_errorbars.png",
+  width = 8,
   height = 6,
   unit = "in",
   dpi = 300,
@@ -351,19 +369,21 @@ makeover_ribbon <- ggplot(
   scale_colour_manual(values = makeover_colours, guide = "none") +
   scale_fill_manual(values = makeover_colours, guide = "none") +
   labs(x = NULL, y = "NULL") +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
-    axis.text = element_text(color = text_col),
-    axis.title.y = element_text(color = text_col),
+    axis.text = element_text(size = 12, color = text_col),
+    axis.title.y = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 makeover_ribbon
+
+record_polaroid()
 ggsave(
   plot = makeover_ribbon,
-  filename = "2026/output/antibiotic_consumption_makeover_ribbon.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/alt_ribbon.png",
+  width = 8,
   height = 6,
   unit = "in",
   bg = bg_col,
@@ -379,7 +399,9 @@ stewardship_levels <- c(
   "Strongly agree"
 )
 
-stewardship_data <- read_csv("2026/data/stewardship_survey_dummy.csv") |>
+stewardship_data <- read_csv(
+  "2026-09-dataviz/data/stewardship_survey_dummy.csv"
+) |>
   mutate(response = factor(response, levels = stewardship_levels))
 
 bad_clustered_bar <- ggplot(
@@ -388,20 +410,26 @@ bad_clustered_bar <- ggplot(
 ) +
   geom_col(position = position_dodge(), width = 0.8) +
   labs(x = NULL, y = NULL) +
-  theme_grey(base_size = 11) +
-  theme(axis.text.x = element_text(angle = 40, hjust = 1))
+  theme_grey(base_size = 12) +
+  theme(
+    axis.text.x = element_text(size = 12, angle = 40, hjust = 1),
+    axis.text.y = element_text(size = 12)
+  )
 bad_clustered_bar
+
+record_polaroid()
 ggsave(
   plot = bad_clustered_bar,
-  filename = "2026/output/stewardship_bad_clustered_bar.png",
-  width = 9,
+  filename = "2026-09-dataviz/output/stewardship_bad_clustered_bar.png",
+  width = 8,
   height = 6,
   unit = "in",
   dpi = 300,
   device = agg_png
 )
 
-bad_clustered_bar
+
+record_polaroid()
 stewardship_wide <- stewardship_data |>
   pivot_wider(names_from = response, values_from = percentage) |>
   mutate(
@@ -488,21 +516,22 @@ diverging_stacked_bar <- ggplot(diverging_segments) +
   ) +
   scale_fill_manual(values = diverging_colours, name = NULL) +
   labs(x = "% of respondents", y = NULL) +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
     legend.position = "top",
     legend.text = element_text(size = 8, color = text_col),
-    axis.text = element_text(color = text_col),
-    axis.title.x = element_text(color = text_col),
+    axis.text = element_text(size = 12, color = text_col),
+    axis.title.x = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.grid.major.y = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
     plot.background = element_rect(fill = bg_col, color = bg_col)
   )
 diverging_stacked_bar
+record_polaroid()
 ggsave(
   plot = diverging_stacked_bar,
-  filename = "2026/output/stewardship_diverging_stacked_bar.png",
+  filename = "2026-09-dataviz/output/alt_diverging_stacked_bar.png",
   width = 9,
   height = 6,
   unit = "in",
@@ -582,12 +611,12 @@ diverging_tintshade <- ggplot(
     labels = function(x) scales::label_percent(scale = 1)(abs(x))
   ) +
   labs(x = NULL, y = "% of respondents") +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
     legend.position = "top",
     legend.text = element_text(size = 8, color = text_col),
-    axis.text = element_text(color = text_col),
-    axis.title.x = element_text(color = text_col),
+    axis.text = element_text(size = 12, color = text_col),
+    axis.title.x = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.grid.major.y = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
@@ -596,7 +625,7 @@ diverging_tintshade <- ggplot(
 diverging_tintshade
 ggsave(
   plot = diverging_tintshade,
-  filename = "2026/output/stewardship_diverging_tintshade.png",
+  filename = "2026-09-dataviz/output/stewardship_diverging_tintshade.png",
   width = 9,
   height = 6,
   unit = "in",
@@ -605,7 +634,9 @@ ggsave(
   device = agg_png
 )
 
-class_data <- read_csv("2026/data/antibiotic_class_prescribing_dummy.csv")
+class_data <- read_csv(
+  "2026-09-dataviz/data/antibiotic_class_prescribing_dummy.csv"
+)
 
 bad_pie <- ggplot(
   class_data,
@@ -614,12 +645,12 @@ bad_pie <- ggplot(
   geom_col(width = 1, colour = "white") +
   coord_polar(theta = "y") +
   labs(x = NULL, y = NULL) +
-  theme_void(base_size = 11) +
+  theme_void(base_size = 12) +
   theme(legend.title = element_blank())
 bad_pie
 ggsave(
   plot = bad_pie,
-  filename = "2026/output/antibiotic_class_bad_pie.png",
+  filename = "2026-09-dataviz/output/antibiotic_class_bad_pie.png",
   width = 9,
   height = 6,
   unit = "in",
@@ -650,10 +681,10 @@ makeover_bar <- ggplot(
   ) +
   scale_fill_manual(values = class_colours, guide = "none") +
   labs(x = NULL, y = NULL) +
-  theme_minimal(base_family = font, base_size = 10) +
+  theme_minimal(base_family = font, base_size = 12) +
   theme(
-    axis.text = element_text(color = text_col),
-    axis.title = element_text(color = text_col),
+    axis.text = element_text(size = 12, color = text_col),
+    axis.title = element_text(size = 12, color = text_col),
     panel.grid.minor = element_blank(),
     panel.grid.major.y = element_blank(),
     panel.background = element_rect(fill = bg_col, color = bg_col),
@@ -662,7 +693,7 @@ makeover_bar <- ggplot(
 makeover_bar
 ggsave(
   plot = makeover_bar,
-  filename = "2026/output/antibiotic_class_makeover_bar.png",
+  filename = "2026-09-dataviz/output/antibiotic_class_makeover_bar.png",
   width = 9,
   height = 6,
   unit = "in",
