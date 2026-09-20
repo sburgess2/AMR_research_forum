@@ -3,6 +3,7 @@ library(ggtext)
 library(ggrepel)
 library(camcorder)
 library(ragg)
+library(monochromeR)
 
 gg_record(
   device = "png",
@@ -17,7 +18,7 @@ text_col <- "#3b3b3b"
 bg_col <- "white"
 
 
-highlight_colour <- "#f16913"
+highlight_colour <- "#2596be"
 grey_colour <- "grey75"
 grey_text_colour <- "grey25"
 label_grey <- "grey45"
@@ -214,6 +215,17 @@ purposeful_colours <- c(
   "PDR" = "#f16913",
   "NON-MDR/PDR" = "#D9D9D9"
 )
+
+purposeful_colours <- c(
+  "MDR" = "#8ED9FF",
+  "PDR" = "#2596be",
+  "NON-MDR/PDR" = "#E1E1E1"
+)
+
+library(colorspace)
+lighten("#2596be", amount = 0.6)
+
+lighten("#D9D9D9", amount = 0.2)
 
 
 #727272
@@ -483,7 +495,7 @@ ggsave(
 gg_record(
   device = "png",
   width = 8,
-  height = 7,
+  height = 6,
   unit = "in",
   dpi = 300
 )
