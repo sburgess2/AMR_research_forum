@@ -108,9 +108,12 @@ Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbio
 
 - 150 visualisations analysed
 - 44% required additional text to explain visual
-- 23% unreadable axes
-- 18% inconsistent colour schemes
-- 10% incorrect graph choice
+- dual y axes
+- inconsistent colour schemes
+- incorrect graph choice
+- hidden data points
+- "chart junk"
+
 :::
 
 ::::::
