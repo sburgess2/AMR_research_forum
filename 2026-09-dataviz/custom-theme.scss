@@ -136,3 +136,17 @@ $presentation-font-size-root: 32px;
   opacity: 0.75;
 }
 
+.reveal .graph-arrow {
+  color: #000000;
+}
+
+.reveal section[id^="graph-alternatives"] .columns {
+  display: flex;
+  align-items: center;
+}
+
+.reveal section[id^="graph-alternatives"] .column img {
+  max-height: 750px;
+  width: 100%;
+}
+

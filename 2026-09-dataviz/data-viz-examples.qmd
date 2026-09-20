@@ -13,25 +13,125 @@ format:
       - title-slide.html
 ---
 
-## My research
-
-![](images/research.png)
-
 ## About me
 
 - Microbiologist and data visualisation consultant
 
-- Part-time research officer in the mEpiLab, School of Veterinary Science, Massey University
-
-- Certificate in Applied Statistics and self taught data visualisation specialist
+- Academic and industry experience in microbiology and genomics
 
 - PhD in Microbiology
 
-- Academic and industry experience in microbiology and genomics
+- Certificate in Applied Statistics and self taught data visualisation specialist
+
+- Part-time research officer in the mEpiLab, School of Veterinary Science, Massey University
+
+## My research
+
+Sources and transmission pathways of antimicrobial resistant *E. coli*
+
+:::: columns
+
+::: {.column width="33%"}
+![](images/Calf.png)
+
+Impact of waste milk feeding
+:::
+
+::: {.column width="33%"}
+![](images/Sewage.png)
+
+ESBL-Ec from humans and waterways
+:::
+
+::: {.column width="33%"}
+![](images/Bhutan.png)
+
+Environmental AMR surveillance
+:::
+
+::::
+
+## How do you feel?
+
+## How do you feel?
+
+:::: columns
+
+::: {.column width="50%"}
+
+![](images/fmicb-12-743939-g004.webp)
+
+::: {.placeholder-note}
+Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
+:::
+
+:::
+::: {.column width="50%"}
+
+:::
+
+::::::
+
+## The Visual Dictionary 
+
+:::: columns
+
+::: {.column width="50%"}
+![](images/fmicb-12-743939-g004.webp)
+:::
+
+::: {.column width="50%"}
+![](images/VisualDictionary.png)
+:::
+
+::::
+
+::: {.notes}
+Ask the audience to describe how they feel when they look at this image with too many colours. Explain this is dummy data from a paper that analyses AMR data visualisations.
+Today we're going to work through a couple of examples of how to declutter and format your graphs so that the audience/reader is clear where they're supposed to look and what the key message is of the graph
+:::
+
+## The Visual Dictionary
+
+:::: columns
+
+::: {.column width="50%"}
+
+![](images/fmicb-12-743939-g004.webp)
+
+::: {.placeholder-note}
+Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
+:::
+
+:::
+::: {.column width="50%"}
+
+- 150 visualisations analysed
+- 44% required additional text to explain visual
+- 23% unreadable axes
+- 18% inconsistent colour schemes
+- 10% incorrect graph choice
+:::
+
+::::::
+
+## Understand your audience and context
+
+- Other scientists
+- Clients
+- Health professionals
+- Government agencies
+- General public
+
+What is the key message?
+
+How will you convey your message to your audience?
 
 ## Presenting data clearly
 
+::: {.fragment}
 No clutter
+:::
 
 ::: {#filename filename="data-viz-examples.qmd"}
 :::
@@ -64,6 +164,7 @@ Excess labels
 :::
 
 ## Presenting data clearly
+
 
 Colour effectively
 
@@ -116,27 +217,19 @@ Clear takeaway message
 
 ::: {.column width="50%"}
 ![](images/line-chart-with-labels_CScherer.png)
-
-::: {.placeholder-note}
-Image source: [Big Mac Index, Cedric Scherer](https://github.com/Z3tt/TidyTuesday/tree/main/plots/2020_52)
-:::
 :::
 
 ::: {.column width="50%"}
 ![](output/vitc_tooth_growth.png)
-
-::: {.placeholder-note}
-Chart by [Cara Thompson](https://github.com/cararthompson/rmedicine2023-workshop/blob/main/level-up-workshop.qmd)
-:::
 :::
 
-::::::
+::::
 
 ## Presenting data clearly
 
+::: {.fragment}
 Text hierarchy
-
-:::: columns
+:::
 
 ![](images/CedricScherer_USviews_votes_simpsons.jpg)
 
@@ -149,63 +242,19 @@ Guides the eye from the top to the bottom
 
 ## Presenting data clearly
 
-Annotations to highlight observations
+Annotations
 
 ![](images/CedricScherer_USviews_votes_simpsons.jpg)
 
 ::: {.notes}
-Your private presenter notes go here.
-Put up an AMR related graph, then follow the same approach that Alex does from data with Storytelling. Ask the audience to close their eyes, open them, take note of where you looked at the graph first then think about how your eyes moved across the slide. https://www.youtube.com/watch?v=0AoS22GoosI People tend to look at the centre first. Where did your eyes look, is it where you want your audience to be looking? Although each person may look at the graph in a different way.  
+Highlight observations
+Add context
+Guide reader
 :::
-
-## How do you feel?
-
-:::: columns
-
-::: {.column width="50%"}
-
-![](images/fmicb-12-743939-g004.webp)
-
-::: {.placeholder-note}
-Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
-:::
-
-:::
-::: {.column width="50%"}
-
-- 150 visualisations analysed
-- 44% required additional text to explain visual
-- 23% unreadable axes
-- 18% inconsistent colour schemes
-- 10% incorrect graph choice
-:::
-
-::::::
-
-## The Visual Dictionary of Stewardship
-
-:::: columns
-
-::: {.column width="50%"}
-![](images/VisualDictionary.png)
-:::
-
-::: {.column width="50%"}
-![](images/fmicb-12-743939-g006.webp)
-:::
-
-::::
-
-
-::: {.notes}
-Ask the audience to describe how they feel when they look at this image with too many colours. Explain this is dummy data from a paper that analyses AMR data visualisations.
-Today we're going to work through a couple of examples of how to declutter and format your graphs so that the audience/reader is clear where they're supposed to look and what the key message is of the graph
-:::
-
-## Who is your audience?
-
 
 ## Makeover
+
+Pre- and Post-COVID-19 Antimicrobial Resistance Pattern of Pathogens in an Intensive Care Unit
 
 ::: {.notes}
 Before moving to next slide ask audience what clutter they would remove
@@ -217,58 +266,86 @@ Before moving to next slide ask audience what clutter they would remove
 Image source: [Golli et al 2024 ](https://www.mdpi.com/1424-8247/17/4/407)
 :::
 
-## Makeover
+## Makeover - declutter
 
-Lets declutter
-
-::: {.fragment}
-![](output/stacked_declutter.png)
+::: {.notes}
+Before moving to next slide ask audience what clutter they would remove
 :::
+
+![](output/stacked_original.png)
+
+::: {.placeholder-note}
+Image source: [Golli et al 2024 ](https://www.mdpi.com/1424-8247/17/4/407)
+:::
+
+## Makeover - declutter
+
+
+![](output/stacked_declutter.png)
+
 
 ::: {.notes}
 Before moving to next slide ask audience how they would colour with purpose
 :::
 
-## Makeover
+## Makeover - colour effectively
+
+![](output/stacked_declutter.png)
+
+
+::: {.notes}
+Before moving to next slide ask audience how they would colour with purpose
+:::
+
+## Makeover - colour effectively
 
 - Colour with purpose [image color picker](https://imagecolorpicker.com/)
 
+:::: columns
 
-![](images/honzot-traffic-lights.png){height="450px"}
+::: {.column width="70%"}
+
+![](output/stacked_declutter.png)
+
+:::
+
+::: {.column width="30%"}
+
+![](images/WHO.png)
+
+:::
+
+::::
 
 ::: {.notes}
 Add in here an example of a graph with the features of a clear visual
 :::
 
-## Makeover
+## Makeover - colour effectively
 
 - Colour with purpose [image color picker](https://imagecolorpicker.com/)
 
 ::: {.fragment fragment-index="1"}
-- Less is more
-:::
-
-::: {.fragment fragment-index="2"}
 - Use accessible colour palettes
 :::
 
 :::: columns
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
-![](images/Rgraph-gallery-color.png){.fragment fragment-index="2"}
+![](images/Rgraph-gallery-color.png){.fragment fragment-index="1"}
 
-::: {.placeholder-note}
+::: {.placeholder-note .fragment fragment-index="1"}
 Image source: [R Graph Gallery, Colour Palette Finder](https://r-graph-gallery.com/color-palette-finder)
 :::
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
-![](images/viz-palette.png){.fragment fragment-index="2"}
+![](images/viz-palette.png){.fragment fragment-index="1"}
 
-::: {.placeholder-note}
+::: {.placeholder-note .fragment fragment-index="1"}
 Image source: [Viz Palette, Susie Lu](https://projects.susielu.com/viz-palette)
 :::
 
@@ -276,71 +353,162 @@ Image source: [Viz Palette, Susie Lu](https://projects.susielu.com/viz-palette)
 
 ::::
 
-## Makeover
+::: {.fragment fragment-index="2"}
+- Less is more
+:::
 
-Colour with purpose
+## Makeover - colour effectively
 
 ![](output/stacked_colour.png)
 
-## Makeover
+## Makeover - reduce eye movement
 
-Reduce eye movement
+![](output/stacked_colour.png)
 
-![](output/stacked_reordered.png)
-
-## Makeover
-
-Reduce eye movement
+## Makeover - reduce eye movement
 
 ![](output/stacked_horizontal.png)
 
-## Makeover
+## Makeover - clear message
 
-Clear message
+![](output/stacked_horizontal.png)
+
+## Makeover - clear message
 
 ![](output/stacked_mirrored.png)
 
-## Makeover
-
-Clear message, text hierarchy
+## Makeover - clear message
 
 ![](output/stacked_slopegraph.png)
 
-## Graph alternatives
+## Makeover
 
-::: {layout="[[42, 16, 42], [42, 16, 42], [42, 16, 42], [42, 16, 42]]" layout-valign="center"}
-![](output/ex_stacked_bar.png){height="130px"}
+:::: columns
 
-[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+:::{.column width=50%}
 
-![](output/alt_line.png){height="130px"}
+![](output/stacked_original.png)
 
-![](output/ex_bar_errorbars.png){height="130px"}
+Before
 
-[{{< fa arrow-right size=2x >}}]{.graph-arrow}
-
-![](output/species_resistance_beeswarm.png){height="130px"}
-
-![](output/antibiotic_consumption_bad_errorbars.png){height="130px"}
-
-[{{< fa arrow-right size=2x >}}]{.graph-arrow}
-
-![](output/alt_ribbon.png){height="130px"}
-
-![](output/stewardship_bad_clustered_bar.png){height="130px"}
-
-[{{< fa arrow-right size=2x >}}]{.graph-arrow}
-
-![](output/alt_diverging_stacked_bar.png){height="130px"}
 :::
 
+:::{.column width=50%}
+![](output/stacked_slopegraph.png)
+
+After
+
+:::
+
+::::
+
+## Graph alternatives
+
+:::: columns
+
+::: {.column width="46%"}
+![](output/ex_stacked_bar.png)
+:::
+
+::: {.column style="width:8%;text-align:center;vertical-align:middle;"}
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+:::
+
+::: {.column width="46%"}
+![](output/alt_line.png)
+:::
+
+::::
+
+## Graph alternatives
+
+:::: columns
+
+::: {.column width="46%"}
+![](output/ex_bar_errorbars.png)
+:::
+
+::: {.column style="width:8%;text-align:center;vertical-align:middle;"}
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+:::
+
+::: {.column width="46%"}
+![](output/species_resistance_beeswarm.png)
+:::
+
+::::
+
+## Graph alternatives
+
+:::: columns
+
+::: {.column width="46%"}
+![](output/antibiotic_consumption_bad_errorbars.png)
+:::
+
+::: {.column style="width:8%;text-align:center;vertical-align:middle;"}
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+:::
+
+::: {.column width="46%"}
+![](output/alt_ribbon.png)
+:::
+
+::::
+
+## Graph alternatives
+
+:::: columns
+
+::: {.column width="46%"}
+![](output/stewardship_bad_clustered_bar.png)
+:::
+
+::: {.column style="width:8%;text-align:center;vertical-align:middle;"}
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+:::
+
+::: {.column width="46%"}
+![](output/alt_diverging_stacked_bar.png)
+:::
+
+::::
+
+## Graph alternatives
+
+:::: columns
+
+::: {.column width="46%"}
+![](output/antibiotic_class_bad_pie.png)
+:::
+
+::: {.column style="width:8%;text-align:center;vertical-align:middle;"}
+[{{< fa arrow-right size=2x >}}]{.graph-arrow}
+:::
+
+::: {.column width="46%"}
+![](output/antibiotic_class_makeover_bar.png)
+:::
+
+::::
+
+::: {.notes}
+Your private presenter notes go here.
+Put up an AMR related graph, then follow the same approach that Alex does from data with Storytelling. Ask the audience to close their eyes, open them, take note of where you looked at the graph first then think about how your eyes moved across the slide. https://www.youtube.com/watch?v=0AoS22GoosI People tend to look at the centre first. Where did your eyes look, is it where you want your audience to be looking? Although each person may look at the graph in a different way.
+:::
 ## Resources
 
 ::: {.incremental}
 - [Storytelling with Data](https://www.storytellingwithdata.com/)
-- [The Visual Dictory of Antimicrobial Stewardship, Infection Control and Institutional Surveillance Data](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2021.743939/full)
+- [From data to viz](https://www.data-to-viz.com/#explore)
 - [R Graph Gallery - Top R Graph Examples](https://r-graph-gallery.com/best-r-chart-examples.html)
 :::
 
 ## Summary
+
+- Declutter
+- Colour effectively - less is more
+- Reduce eye movement
+- Clear takeaway message
+
 
