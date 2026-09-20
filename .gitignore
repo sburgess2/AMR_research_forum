@@ -6,3 +6,4 @@ references.csv
 /.quarto/
 **/*.quarto_ipynb
 data/
+2026-09-dataviz/data-viz-examples_files
