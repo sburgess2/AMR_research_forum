@@ -368,7 +368,7 @@ makeover_ribbon <- ggplot(
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
   scale_colour_manual(values = makeover_colours, guide = "none") +
   scale_fill_manual(values = makeover_colours, guide = "none") +
-  labs(x = NULL, y = "NULL") +
+  labs(x = NULL, y = NULL) +
   theme_minimal(base_family = font, base_size = 12) +
   theme(
     axis.text = element_text(size = 12, color = text_col),
