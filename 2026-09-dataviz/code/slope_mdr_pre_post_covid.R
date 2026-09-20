@@ -58,7 +58,17 @@ y_max <- max(mdr_data$percentage)
 
 pre_labels <- mdr_data |>
   filter(period == "Pre-COVID-19") |>
-  mutate(label = glue::glue("{species} {round(percentage, 1)}%"))
+  mutate(
+    species_chr = as.character(species),
+    is_abbreviation = species_chr %in% c("NFB", "CoNS"),
+    has_spp = str_detect(species_chr, "spp\\.$"),
+    genus_only = str_remove(species_chr, "\\s*spp\\.$"),
+    label = case_when(
+      is_abbreviation ~ glue::glue("'{species_chr} {round(percentage, 1)}%'"),
+      has_spp ~ glue::glue("italic('{genus_only}')~'spp. {round(percentage, 1)}%'"),
+      .default = glue::glue("italic('{species_chr}')~'{round(percentage, 1)}%'")
+    )
+  )
 
 post_labels <- mdr_data |>
   filter(period == "Post-COVID-19") |>
@@ -280,7 +290,7 @@ p_colour <- ggplot(
 p_colour
 ggsave(
   plot = p_colour,
-  filename = "2026/output/stacked_colour.png",
+  filename = "2026-09-dataviz/output/stacked_colour.png",
   width = 8,
   height = 6,
   unit = "in",
@@ -342,7 +352,7 @@ p_reorderd <- ggplot(
 p_reorderd
 ggsave(
   plot = p_colour,
-  filename = "2026/output/stacked_reordered.png",
+  filename = "2026-09-dataviz/output/stacked_reordered.png",
   width = 8,
   height = 6,
   unit = "in",
@@ -392,7 +402,7 @@ p_horizontal
 
 ggsave(
   plot = p_horizontal,
-  filename = "2026/output/stacked_horizontal.png",
+  filename = "2026-09-dataviz/output/stacked_horizontal.png",
   width = 8,
   height = 6,
   unit = "in",
@@ -483,7 +493,7 @@ record_polaroid()
 
 ggsave(
   plot = p_mirrored,
-  filename = "2026/output/stacked_mirrored.png",
+  filename = "2026-09-dataviz/output/stacked_mirrored.png",
   width = 8,
   height = 6,
   unit = "in",
@@ -520,6 +530,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   geom_text_repel(
     data = filter(pre_labels, !is_acinetobacter),
     aes(label = label, color = label_colour),
+    parse = TRUE,
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
@@ -532,6 +543,7 @@ p_slope <- ggplot(mdr_data, aes(x = x, y = percentage, group = species)) +
   geom_text_repel(
     data = filter(pre_labels, is_acinetobacter),
     aes(label = label, color = label_colour),
+    parse = TRUE,
     hjust = 1,
     direction = "y",
     nudge_x = -0.1,
@@ -599,7 +611,7 @@ p_slope
 record_polaroid()
 ggsave(
   plot = p_slope,
-  filename = "2026/output/stacked_slopegraph.png",
+  filename = "2026-09-dataviz/output/stacked_slopegraph.png",
   width = 8,
   height = 6,
   unit = "in",
