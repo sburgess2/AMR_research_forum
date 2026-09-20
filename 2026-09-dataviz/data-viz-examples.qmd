@@ -118,6 +118,10 @@ Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbio
 
 ::::::
 
+## Exploratory analyses completed
+
+What next?
+
 ## Understand your audience and context
 
 - Other scientists
@@ -126,9 +130,9 @@ Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbio
 - Government agencies
 - General public
 
-What is the key message?
-
 How will you convey your message to your audience?
+
+What is the key message?
 
 ## Presenting data clearly
 
@@ -509,9 +513,16 @@ Put up an AMR related graph, then follow the same approach that Alex does from d
 
 ## Summary
 
+::: {.incremental}
 - Declutter
 - Colour effectively - less is more
 - Reduce eye movement
 - Clear takeaway message
+
+s.burgess1@massey.ac.nz
+
+https://github.com/sburgess2
+
+:::
 
 
