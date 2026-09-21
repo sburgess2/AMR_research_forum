@@ -26,7 +26,7 @@ label_grey <- "grey45"
 plot_title <- glue::glue(
   "The prevalence of MDR ICU pathogens decreased post-COVID, but ",
   "<span style='color:{highlight_colour};'><i>Acinetobacter</i> spp.</span> ",
-  "but remained the highest for <i>Acinetobacter</i> spp."
+  "remained the highest"
 )
 
 mdr_data <- read_csv("2026/data/amr_mdr_pdr_pre_post_covid.csv") |>
@@ -65,7 +65,9 @@ pre_labels <- mdr_data |>
     genus_only = str_remove(species_chr, "\\s*spp\\.$"),
     label = case_when(
       is_abbreviation ~ glue::glue("'{species_chr} {round(percentage, 1)}%'"),
-      has_spp ~ glue::glue("italic('{genus_only}')~'spp. {round(percentage, 1)}%'"),
+      has_spp ~ glue::glue(
+        "italic('{genus_only}')~'spp. {round(percentage, 1)}%'"
+      ),
       .default = glue::glue("italic('{species_chr}')~'{round(percentage, 1)}%'")
     )
   )
