@@ -118,10 +118,6 @@ Image source: [Keizer et al 2021 ](https://www.frontiersin.org/journals/microbio
 
 ::::::
 
-## Exploratory analyses completed
-
-What next?
-
 ## Understand your audience and context
 
 - Other scientists
@@ -518,6 +514,9 @@ Put up an AMR related graph, then follow the same approach that Alex does from d
 - Colour effectively - less is more
 - Reduce eye movement
 - Clear takeaway message
+:::
+
+:::{.fragment}
 
 s.burgess1@massey.ac.nz
 
