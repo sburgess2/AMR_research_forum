@@ -11,6 +11,7 @@ format:
     transition: fade
     template-partials:
       - title-slide.html
+    embed-resources: true
 ---
 
 ## About me
